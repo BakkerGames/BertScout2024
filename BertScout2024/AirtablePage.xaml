@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="ContentPage"
+    x:Name="cp"
+    x:Class="BertScout2024.AirtablePage"
+    Title="Airtable"
+    BackgroundColor="White"
+    >
+    
+    <VerticalStackLayout
+        VerticalOptions="Fill"
+        SizeChanged="VerticalStackLayout_SizeChanged"
+        >
+        
+        <Label 
+            x:Name="AirtableLabel"
+            Text="Send data to Airtable!" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Button 
+            x:Name="AirtableSend"
+            Text="Send"
+            HorizontalOptions="Center"
+            Clicked="AirtableSend_Clicked"
+            />
+
+        <Label 
+            x:Name="AirtableUpdatedLabel"
+            Text=""
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+
+        <ScrollView
+            x:Name="ScrollResults"
+            VerticalScrollBarVisibility="Always"
+            BackgroundColor="White">
+
+            <Label
+                x:Name="AirtableResults" 
+                Text="" 
+                FontFamily="Consolas"
+                VerticalOptions="FillAndExpand"
+                />
+
+        </ScrollView>
+       
+    </VerticalStackLayout>
+
+</ContentPage>

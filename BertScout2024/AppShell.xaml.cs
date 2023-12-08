@@ -1,10 +1,9 @@
-﻿namespace BertScout2024
+﻿namespace BertScout2024;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

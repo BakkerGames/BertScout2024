@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="BertScout2024.ListPage"
+    x:DataType="ContentPage"
+    x:Name="cpListMatches"
+    Title="List Matches"
+    BackgroundColor="White"
+    >
+
+    <StackLayout
+        VerticalOptions="Fill"
+        SizeChanged="VerticalStackLayout_SizeChanged"
+        >
+
+        <Button
+            x:Name="ShowMatchButton"
+            Text="Refresh List"
+            Clicked="ShowMatchButton_Clicked"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+
+        <ScrollView
+            x:Name="ScrollResults"
+            VerticalScrollBarVisibility="Always"
+            BackgroundColor="White">
+
+            <Label
+                x:Name="ListResults"
+                Text=""
+                FontFamily="Consolas"
+                VerticalOptions="FillAndExpand"
+                />
+
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>
