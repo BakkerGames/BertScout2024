@@ -10,7 +10,7 @@
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="BERT Scouting App 2023"
+        Title="BERT Scouting App 2024"
         FlexLayout.AlignSelf="Center"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
