@@ -24,7 +24,7 @@ public class AirtableService
         using AirtableBase airtableBase = new(AIRTABLE_TOKEN, AIRTABLE_BASE);
 
         foreach (TeamMatch match in matches)
-        {// Sorry for this, I'm trying to figure out how this works :)
+        {
             if (match.Uuid == null) continue;
             if (string.IsNullOrEmpty(match.AirtableId))
             {
