@@ -103,64 +103,18 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
-    private void ButtonAutoCubeTopPlus_Clicked(object sender, EventArgs e)
+    private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Auto_Cubes_Top < 3)
-        {
-            item.Auto_Cubes_Top++;
-            LabelAutoCubeTop.Text = item.Auto_Cubes_Top.ToString();
+            item.Auto_Speaker++;
+            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
             SaveFields();
-        }
     }
 
-    private void ButtonAutoCubeMidPlus_Clicked(object sender, EventArgs e)
+    private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Auto_Cubes_Mid < 3)
-        {
-            item.Auto_Cubes_Mid++;
-            LabelAutoCubeMid.Text = item.Auto_Cubes_Mid.ToString();
+            item.Auto_Amp++;
+            LabelAutoAmp.Text = item.Auto_Amp.ToString();
             SaveFields();
-        }
-    }
-
-    private void ButtonAutoCubeLowPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Auto_Cubes_Low < 9)
-        {
-            item.Auto_Cubes_Low++;
-            LabelAutoCubeLow.Text = item.Auto_Cubes_Low.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonAutoConeTopPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Auto_Cones_Top < 6)
-        {
-            item.Auto_Cones_Top++;
-            LabelAutoConeTop.Text = item.Auto_Cones_Top.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonAutoConeMidPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Auto_Cones_Mid < 6)
-        {
-            item.Auto_Cones_Mid++;
-            LabelAutoConeMid.Text = item.Auto_Cones_Mid.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonAutoConeLowPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Auto_Cones_Low < 9)
-        {
-            item.Auto_Cones_Low++;
-            LabelAutoConeLow.Text = item.Auto_Cones_Low.ToString();
-            SaveFields();
-        }
     }
 
     private void ButtonAutoMobility_Clicked(object sender, EventArgs e)
@@ -208,64 +162,18 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
-    private void ButtonTeleCubeTopPlus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Tele_Cubes_Top < 3)
-        {
-            item.Tele_Cubes_Top++;
-            LabelTeleCubeTop.Text = item.Tele_Cubes_Top.ToString();
+            item.Tele_Speaker++;
+            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
             SaveFields();
-        }
     }
 
-    private void ButtonTeleCubeMidPlus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Tele_Cubes_Mid < 3)
-        {
-            item.Tele_Cubes_Mid++;
-            LabelTeleCubeMid.Text = item.Tele_Cubes_Mid.ToString();
+            item.Tele_Amp++;
+            LabelTeleAmp.Text = item.Tele_Amp.ToString();
             SaveFields();
-        }
-    }
-
-    private void ButtonTeleCubeLowPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Cubes_Low < 9)
-        {
-            item.Tele_Cubes_Low++;
-            LabelTeleCubeLow.Text = item.Tele_Cubes_Low.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeTopPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Cones_Top < 6)
-        {
-            item.Tele_Cones_Top++;
-            LabelTeleConeTop.Text = item.Tele_Cones_Top.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeMidPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Cones_Mid < 6)
-        {
-            item.Tele_Cones_Mid++;
-            LabelTeleConeMid.Text = item.Tele_Cones_Mid.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeLowPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Cones_Low < 9)
-        {
-            item.Tele_Cones_Low++;
-            LabelTeleConeLow.Text = item.Tele_Cones_Low.ToString();
-            SaveFields();
-        }
     }
 
     private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
@@ -283,31 +191,61 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
-    private void ButtonEndgameDocked_Clicked(object sender, EventArgs e)
+    private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Docked = !item.Endgame_Docked;
-        switch (item.Endgame_Docked)
+        item.Endgame_Harmony = !item.Endgame_Harmony;
+        switch (item.Endgame_Harmony)
         {
             case false:
-                ButtonEndgameDocked.BackgroundColor = Colors.Gray;
+                ButtonEndgameHarmony.BackgroundColor = Colors.Gray;
                 break;
             case true:
-                ButtonEndgameDocked.BackgroundColor = Colors.Green;
+                ButtonEndgameHarmony.BackgroundColor = Colors.Green;
                 break;
         }
         SaveFields();
     }
 
-    private void ButtonEndgameEngaged_Clicked(object sender, EventArgs e)
+    private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Engaged = !item.Endgame_Engaged;
-        switch (item.Endgame_Engaged)
+        item.Endgame_Spotlit = !item.Endgame_Spotlit;
+        switch (item.Endgame_Spotlit)
         {
             case false:
-                ButtonEndgameEngaged.BackgroundColor = Colors.Gray;
+                ButtonEndgameSpotlit.BackgroundColor = Colors.Gray;
                 break;
             case true:
-                ButtonEndgameEngaged.BackgroundColor = Colors.Green;
+                ButtonEndgameSpotlit.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
+    private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
+    {
+        item.Endgame_OnStage = !item.Endgame_OnStage;
+        switch (item.Endgame_OnStage)
+        {
+            case false:
+                ButtonEndgameOnStage.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonEndgameOnStage.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
+    private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Coop = !item.Tele_Coop;
+        switch (item.Tele_Coop)
+        {
+            case false:
+                ButtonTeleCoopertition.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonTeleCoopertition.BackgroundColor = Colors.Green;
                 break;
         }
         SaveFields();
@@ -318,135 +256,67 @@ public partial class MainPage : ContentPage
         item.Comments = Comments?.Text ?? "";
     }
 
-    private void ButtonAutoCubeTopMinus_Clicked(object sender, EventArgs e)
+    private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
     {
         if
-            (item.Auto_Cubes_Top > 0)
+            (item.Auto_Speaker > 0)
         {
-            item.Auto_Cubes_Top--;
-            LabelAutoCubeTop.Text = item.Auto_Cubes_Top.ToString();
+            item.Auto_Speaker--;
+            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
             SaveFields();
         }
     }
 
-    private void ButtonAutoCubeMidMinus_Clicked(object sender, EventArgs e)
+    private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
     {
         if
-            (item.Auto_Cubes_Mid > 0)
+            (item.Auto_Amp > 0)
         {
-            item.Auto_Cubes_Mid--;
-            LabelAutoCubeMid.Text = item.Auto_Cubes_Mid.ToString();
+            item.Auto_Amp--;
+            LabelAutoAmp.Text = item.Auto_Amp.ToString();
             SaveFields();
         }
     }
 
-    private void ButtonAutoCubeLowMinus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
     {
         if
-            (item.Auto_Cubes_Low > 0)
+            (item.Tele_Speaker > 0)
         {
-            item.Auto_Cubes_Low--;
-            LabelAutoCubeLow.Text = item.Auto_Cubes_Low.ToString();
+            item.Tele_Speaker--;
+            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
             SaveFields();
         }
     }
 
-    private void ButtonAutoConeTopMinus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
     {
         if
-            (item.Auto_Cones_Top > 0)
+            (item.Tele_Amp > 0)
         {
-            item.Auto_Cones_Top--;
-            LabelAutoConeTop.Text = item.Auto_Cones_Top.ToString();
+            item.Tele_Amp--;
+            LabelTeleAmp.Text = item.Tele_Amp.ToString();
             SaveFields();
         }
     }
 
-    private void ButtonAutoConeMidMinus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleTrapMinus_Clicked(object sender, EventArgs e)
     {
-        if
-            (item.Auto_Cones_Mid > 0)
+        if(item.Tele_Trap > 0)
         {
-            item.Auto_Cones_Mid--;
-            LabelAutoConeMid.Text = item.Auto_Cones_Mid.ToString();
+            item.Tele_Trap--;
+            LabelTeleTrap.Text = item.Tele_Trap.ToString();
             SaveFields();
         }
     }
-
-    private void ButtonAutoConeLowMinus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleTrapPlus_Clicked(object sender, EventArgs e)
     {
-        if
-            (item.Auto_Cones_Low > 0)
+        if (item.Tele_Trap < 3)
         {
-            item.Auto_Cones_Low--;
-            LabelAutoConeLow.Text = item.Auto_Cones_Low.ToString();
+            item.Tele_Trap++;
+            LabelTeleTrap.Text = item.Tele_Trap.ToString();
             SaveFields();
-        }
-    }
 
-    private void ButtonTeleCubeTopMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cubes_Top > 0)
-        {
-            item.Tele_Cubes_Top--;
-            LabelTeleCubeTop.Text = item.Tele_Cubes_Top.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleCubeMidMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cubes_Mid > 0)
-        {
-            item.Tele_Cubes_Mid--;
-            LabelTeleCubeMid.Text = item.Tele_Cubes_Mid.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleCubeLowMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cubes_Low > 0)
-        {
-            item.Tele_Cubes_Low--;
-            LabelTeleCubeLow.Text = item.Tele_Cubes_Low.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeTopMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cones_Top > 0)
-        {
-            item.Tele_Cones_Top--;
-            LabelTeleConeTop.Text = item.Tele_Cones_Top.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeMidMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cones_Mid > 0)
-        {
-            item.Tele_Cones_Mid--;
-            LabelTeleConeMid.Text = item.Tele_Cones_Mid.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleConeLowMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Cones_Low > 0)
-        {
-            item.Tele_Cones_Low--;
-            LabelTeleConeLow.Text = item.Tele_Cones_Low.ToString();
-            SaveFields();
         }
     }
 }

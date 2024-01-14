@@ -3,7 +3,7 @@ using BertScout2024.Models;
 
 namespace BertScout2024;
 
-public partial class AirtablePage : ContentPage
+public partial class AirtablePage
 {
     private readonly LocalDatabase db = new();
 

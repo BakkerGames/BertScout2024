@@ -59,24 +59,22 @@ public partial class MainPage
 
     private void FillFields(TeamMatch item)
     {
-        LabelAutoCubeTop.Text = item.Auto_Cubes_Top.ToString();
-        LabelAutoCubeMid.Text = item.Auto_Cubes_Mid.ToString();
-        LabelAutoCubeLow.Text = item.Auto_Cubes_Low.ToString();
-        LabelAutoConeTop.Text = item.Auto_Cones_Top.ToString();
-        LabelAutoConeMid.Text = item.Auto_Cones_Mid.ToString();
-        LabelAutoConeLow.Text = item.Auto_Cones_Low.ToString();
+        LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+        LabelAutoAmp.Text = item.Auto_Amp.ToString();
+
         ButtonAutoMobility.BackgroundColor = item.Auto_Mobility ? Colors.Green : Colors.Gray;
         ButtonAutoDocked.BackgroundColor = item.Auto_Docked ? Colors.Green : Colors.Gray;
         ButtonAutoEngaged.BackgroundColor = item.Auto_Engaged ? Colors.Green : Colors.Gray;
-        LabelTeleCubeTop.Text = item.Tele_Cubes_Top.ToString();
-        LabelTeleCubeMid.Text = item.Tele_Cubes_Mid.ToString();
-        LabelTeleCubeLow.Text = item.Tele_Cubes_Low.ToString();
-        LabelTeleConeTop.Text = item.Tele_Cones_Top.ToString();
-        LabelTeleConeMid.Text = item.Tele_Cones_Mid.ToString();
-        LabelTeleConeLow.Text = item.Tele_Cones_Low.ToString();
+
+        LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+        LabelTeleAmp.Text = item.Tele_Amp.ToString();
+        LabelTeleTrap.Text = item.Tele_Trap.ToString();
+
         ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
-        ButtonEndgameDocked.BackgroundColor = item.Endgame_Docked ? Colors.Green : Colors.Gray;
-        ButtonEndgameEngaged.BackgroundColor = item.Endgame_Engaged ? Colors.Green : Colors.Gray;
+        ButtonEndgameOnStage.BackgroundColor = item.Endgame_OnStage ? Colors.Green : Colors.Gray;
+        ButtonEndgameSpotlit.BackgroundColor = item.Endgame_Spotlit ? Colors.Green : Colors.Gray;
+        ButtonEndgameHarmony.BackgroundColor = item.Endgame_Harmony ? Colors.Green : Colors.Gray;
+
         Comments.Text = item.Comments;
         CommentPicker.SelectedIndex = -1;
     }
