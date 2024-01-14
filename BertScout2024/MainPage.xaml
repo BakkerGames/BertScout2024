@@ -88,26 +88,26 @@
 
                         <Label
                             Margin="10,0,0,0"
-                            FontAttributes="Bold">Cubes</Label>
+                            FontAttributes="Bold">Note</Label>
 
                         <HorizontalStackLayout
                             HorizontalOptions="Start"
                             >
 
                             <Label
-                                Text="Top:"
+                                Text="Speaker:"
                                 WidthRequest="50"
                                 />
 
                             <Button
-                                x:Name="ButtonAutoCubeTopMinus"
-                                Clicked="ButtonAutoCubeTopMinus_Clicked"
+                                x:Name="ButtonAutoSpeakerMinus" 
+                                Clicked="ButtonAutoSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text="-"
                                 />
 
                             <Label
-                                x:Name="LabelAutoCubeTop"
+                                x:Name="LabelAutoSpeaker"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -115,8 +115,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoCubeTopPlus"
-                                Clicked="ButtonAutoCubeTopPlus_Clicked"
+                                x:Name="ButtonAutoSpeakerPlus"
+                                Clicked="ButtonAutoSpeakerPlus_Clicked"
                                 Text=" + "
                                 />
 
@@ -127,19 +127,19 @@
                             >
 
                             <Label
-                                Text="Mid:"
+                                Text="Amplifier:"
                                 WidthRequest="50"
                                 />
 
                             <Button
-                                x:Name="ButtonAutoCubeMidMinus"
-                                Clicked="ButtonAutoCubeMidMinus_Clicked"
+                                x:Name="ButtonAutoAmpMinus"
+                                Clicked="ButtonAutoAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text="-"
                                 />
 
                             <Label
-                                x:Name="LabelAutoCubeMid"
+                                x:Name="LabelAutoAmp"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -147,146 +147,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoCubeMidPlus"
-                                Clicked="ButtonAutoCubeMidPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Low:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoCubeLowMinus"
-                                Clicked="ButtonAutoCubeLowMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelAutoCubeLow"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoCubeLowPlus"
-                                Clicked="ButtonAutoCubeLowPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
-
-                    </VerticalStackLayout>
-
-                    <VerticalStackLayout>
-
-                        <Label
-                            Margin="10,0,0,0"
-                            FontAttributes="Bold">
-                            Cones
-                        </Label>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Top:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeTopMinus"
-                                Clicked="ButtonAutoConeTopMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelAutoConeTop"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeTopPlus"
-                                Clicked="ButtonAutoConeTopPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Mid:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeMidMinus"
-                                Clicked="ButtonAutoConeMidMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelAutoConeMid"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeMidPlus"
-                                Clicked="ButtonAutoConeMidPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Low:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeLowMinus"
-                                Clicked="ButtonAutoConeLowMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelAutoConeLow"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoConeLowPlus"
-                                Clicked="ButtonAutoConeLowPlus_Clicked"
+                                x:Name="ButtonAutoAmpPlus"
+                                Clicked="ButtonAutoAmpPlus_Clicked"
                                 Text=" + "
                                 />
 
@@ -360,7 +222,7 @@
                         <Label
                             Margin="10,0,0,0"
                             FontAttributes="Bold">
-                            Cubes
+                            Notes
                         </Label>
 
                         <HorizontalStackLayout
@@ -368,19 +230,19 @@
                             >
 
                             <Label
-                                Text="Top:"
+                                Text="Speaker:"
                                 WidthRequest="50"
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeTopMinus"
-                                Clicked="ButtonTeleCubeTopMinus_Clicked"
+                                x:Name="ButtonTeleSpeakerMinus"
+                                Clicked="ButtonTeleSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text="-"
                                 />
 
                             <Label
-                                x:Name="LabelTeleCubeTop"
+                                x:Name="LabelTeleSpeaker"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -388,8 +250,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeTopPlus"
-                                Clicked="ButtonTeleCubeTopPlus_Clicked"
+                                x:Name="ButtonTeleSpeakerPlus"
+                                Clicked="ButtonTeleSpeakerPlus_Clicked"
                                 Text=" + "
                                 />
 
@@ -400,19 +262,19 @@
                             >
 
                             <Label
-                                Text="Mid:"
+                                Text="Amplifier:"
                                 WidthRequest="50"
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeMidMinus"
-                                Clicked="ButtonTeleCubeMidMinus_Clicked"
+                                x:Name="ButtonTeleAmpMinus"
+                                Clicked="ButtonTeleAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text="-"
                                 />
 
                             <Label
-                                x:Name="LabelTeleCubeMid"
+                                x:Name="LabelTeleAmp"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -420,8 +282,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeMidPlus"
-                                Clicked="ButtonTeleCubeMidPlus_Clicked"
+                                x:Name="ButtonTeleAmpPlus"
+                                Clicked="ButtonTeleAmpPlus_Clicked"
                                 Text=" + "
                                 />
 
@@ -432,19 +294,19 @@
                             >
 
                             <Label
-                                Text="Low:"
+                                Text="Trap:"
                                 WidthRequest="50"
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeLowMinus"
-                                Clicked="ButtonTeleCubeLowMinus_Clicked"
+                                x:Name="ButtonTeleTrapMinus"
+                                Clicked="ButtonTeleTrapMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text="-"
                                 />
 
                             <Label
-                                x:Name="LabelTeleCubeLow"
+                                x:Name="LabelTeleTrap"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -452,122 +314,34 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleCubeLowPlus"
-                                Clicked="ButtonTeleCubeLowPlus_Clicked"
+                                x:Name="ButtonTeleTrapPlus"
+                                Clicked="ButtonTeleTrapPlus_Clicked"
                                 Text=" + "
                                 />
 
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>
-
-                    <VerticalStackLayout>
-                        
-                        <Label
-                            Margin="10,0,0,0"
-                            FontAttributes="Bold">
-                            Cones
-                        </Label>
-                        
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Top:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleConeTopMinus"
-                                Clicked="ButtonTeleConeTopMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelTeleConeTop"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleConeTopPlus"
-                                Clicked="ButtonTeleConeTopPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
+                    <VerticalStackLayout
+                    Margin="10,202,0,0">
 
                         <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Mid:"
-                                WidthRequest="50"
-                                />
+                    HorizontalOptions="Start">
 
                             <Button
-                                x:Name="ButtonTeleConeMidMinus"
-                                Clicked="ButtonTeleConeMidMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelTeleConeMid"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleConeMidPlus"
-                                Clicked="ButtonTeleConeMidPlus_Clicked"
-                                Text=" + "
-                                />
-
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Low:"
-                                WidthRequest="50"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleConeLowMinus"
-                                Clicked="ButtonTeleConeLowMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                />
-
-                            <Label
-                                x:Name="LabelTeleConeLow"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleConeLowPlus"
-                                Clicked="ButtonTeleConeLowPlus_Clicked"
-                                Text=" + "
-                                />
+                    x:Name="ButtonTeleCoopertition"
+                    Clicked="ButtonTeleCoopertition_Clicked"
+                    BackgroundColor="Grey"
+                    WidthRequest="200"
+                    Text="Coopertition"
+                    Margin="10,32,0,0"
+                    />
 
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>
-
                 </HorizontalStackLayout>
+                
 
                 <Label
                     Text="Endgame"
@@ -594,20 +368,28 @@
                             />
 
                         <Button
-                            x:Name="ButtonEndgameDocked"
-                            Clicked="ButtonEndgameDocked_Clicked"
+                            x:Name="ButtonEndgameHarmony"
+                            Clicked="ButtonEndgameHarmony_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="120"
-                            Text="Docked"
+                            WidthRequest="150"
+                            Text="Harmony"
                             />
 
                         <Button
-                            x:Name="ButtonEndgameEngaged"
-                            Clicked="ButtonEndgameEngaged_Clicked"
+                            x:Name="ButtonEndgameSpotlit"
+                            Clicked="ButtonEndgameSpotlit_Clicked"
                             BackgroundColor="Grey"
                             WidthRequest="120"
-                            Text="Engaged"
+                            Text="Spotlit"
                             />
+
+                        <Button
+                             x:Name="ButtonEndgameOnStage"
+                             Clicked="ButtonEndgameOnStage_Clicked"
+                             BackgroundColor="Grey"
+                             WidthRequest="120"
+                             Text="On Stage"
+     />
 
                     </HorizontalStackLayout>
 

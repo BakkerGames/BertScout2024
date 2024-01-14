@@ -30,27 +30,23 @@ public class TeamMatch : BaseModel
     public bool Auto_Docked { get; set; }
     public bool Auto_Engaged { get; set; }
 
-    public int Auto_Cubes_Top { get; set; }
-    public int Auto_Cubes_Mid { get; set; }
-    public int Auto_Cubes_Low { get; set; }
-    public int Auto_Cones_Top { get; set; }
-    public int Auto_Cones_Mid { get; set; }
-    public int Auto_Cones_Low { get; set; }
+    public int Auto_Speaker { get; set; }
+    public int Auto_Amp { get; set; }
 
     // teleop
 
-    public int Tele_Cubes_Top { get; set; }
-    public int Tele_Cubes_Mid { get; set; }
-    public int Tele_Cubes_Low { get; set; }
-    public int Tele_Cones_Top { get; set; }
-    public int Tele_Cones_Mid { get; set; }
-    public int Tele_Cones_Low { get; set; }
+    public int Tele_Speaker { get; set; }
+    public int Tele_Amp { get; set; }
+    public int Tele_Trap { get; set; }
+
+    public bool Tele_Coop { get; set; }
 
     // end game
 
+    public bool Endgame_OnStage { get; set; }
+    public bool Endgame_Harmony { get; set; }
+    public bool Endgame_Spotlit { get; set; }
     public bool Endgame_Parked { get; set; }
-    public bool Endgame_Docked { get; set; }
-    public bool Endgame_Engaged { get; set; }
 
     // overall
 

@@ -3,7 +3,7 @@ using BertScout2024.Models;
 
 namespace BertScout2024;
 
-public partial class ListPage : ContentPage
+public partial class ListPage
 {
     private readonly LocalDatabase db = new();
 
