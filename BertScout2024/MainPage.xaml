@@ -24,7 +24,7 @@
 
             <Entry
                 x:Name="TeamNumber"
-                WidthRequest="70"
+                WidthRequest="100"
                 Keyboard="Numeric"
                 MaxLength="5"
                 Margin="4,10,0,0"
