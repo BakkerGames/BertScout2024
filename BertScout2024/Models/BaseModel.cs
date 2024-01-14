@@ -5,12 +5,13 @@ namespace BertScout2024.Models;
 
 public class BaseModel
 {
+    private readonly JsonSerializerOptions WriteOptions = new()
+    {
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
     public override string ToString()
     {
-        JsonSerializerOptions WriteOptions = new()
-        {
-            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-        };
         return JsonSerializer.Serialize(this, WriteOptions);
     }
 }

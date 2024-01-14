@@ -26,10 +26,7 @@ public class TeamMatch : BaseModel
 
     // autonomous
 
-    public bool Auto_Mobility { get; set; }
-    public bool Auto_Docked { get; set; }
-    public bool Auto_Engaged { get; set; }
-
+    public bool Auto_Leave { get; set; }
     public int Auto_Speaker { get; set; }
     public int Auto_Amp { get; set; }
 
@@ -37,8 +34,7 @@ public class TeamMatch : BaseModel
 
     public int Tele_Speaker { get; set; }
     public int Tele_Amp { get; set; }
-    public int Tele_Trap { get; set; }
-
+    public int Tele_Amplified { get; set; }
     public bool Tele_Coop { get; set; }
 
     // end game
@@ -47,6 +43,7 @@ public class TeamMatch : BaseModel
     public bool Endgame_Harmony { get; set; }
     public bool Endgame_Spotlit { get; set; }
     public bool Endgame_Parked { get; set; }
+    public bool Endgame_Trap { get; set; }
 
     // overall
 

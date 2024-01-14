@@ -103,6 +103,18 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
+    // Autonomous
+
+    private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
+    {
+        if
+            (item.Auto_Speaker > 0)
+        {
+            item.Auto_Speaker--;
+            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+            SaveFields();
+        }
+    }
     private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
     {
             item.Auto_Speaker++;
@@ -110,58 +122,50 @@ public partial class MainPage : ContentPage
             SaveFields();
     }
 
-    private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
+    private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
     {
-            item.Auto_Amp++;
+        if
+            (item.Auto_Amp > 0)
+        {
+            item.Auto_Amp--;
             LabelAutoAmp.Text = item.Auto_Amp.ToString();
             SaveFields();
+        }
+    }
+    private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
+    {
+        item.Auto_Amp++;
+        LabelAutoAmp.Text = item.Auto_Amp.ToString();
+        SaveFields();
     }
 
-    private void ButtonAutoMobility_Clicked(object sender, EventArgs e)
+    private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
     {
-        item.Auto_Mobility = !item.Auto_Mobility;
-        switch (item.Auto_Mobility)
+        item.Auto_Leave = !item.Auto_Leave;
+        switch (item.Auto_Leave)
         {
             case false:
-                ButtonAutoMobility.BackgroundColor = Colors.Gray;
+                ButtonAutoLeave.BackgroundColor = Colors.Gray;
                 break;
             case true:
-                ButtonAutoMobility.BackgroundColor = Colors.Green;
+                ButtonAutoLeave.BackgroundColor = Colors.Green;
                 break;
         }
         SaveFields();
     }
 
-    private void ButtonAutoDocked_Clicked(object sender, EventArgs e)
-    {
-        item.Auto_Docked = !item.Auto_Docked;
-        switch (item.Auto_Docked)
-        {
-            case false:
-                ButtonAutoDocked.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoDocked.BackgroundColor = Colors.Green;
-                break;
-        }
-        SaveFields();
-    }
+    // Teleop
 
-    private void ButtonAutoEngaged_Clicked(object sender, EventArgs e)
+    private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
     {
-        item.Auto_Engaged = !item.Auto_Engaged;
-        switch (item.Auto_Engaged)
+        if
+            (item.Tele_Speaker > 0)
         {
-            case false:
-                ButtonAutoEngaged.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoEngaged.BackgroundColor = Colors.Green;
-                break;
+            item.Tele_Speaker--;
+            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+            SaveFields();
         }
-        SaveFields();
     }
-
     private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
     {
             item.Tele_Speaker++;
@@ -169,12 +173,59 @@ public partial class MainPage : ContentPage
             SaveFields();
     }
 
+    private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
+    {
+        if
+            (item.Tele_Amp > 0)
+        {
+            item.Tele_Amp--;
+            LabelTeleAmp.Text = item.Tele_Amp.ToString();
+            SaveFields();
+        }
+    }
     private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
     {
             item.Tele_Amp++;
             LabelTeleAmp.Text = item.Tele_Amp.ToString();
             SaveFields();
     }
+
+    private void ButtonTeleAmplifiedMinus_Clicked(object sender, EventArgs e)
+    {
+        if (item.Tele_Amplified > 0)
+        {
+            item.Tele_Amplified--;
+            LabelTeleAmplified.Text = item.Tele_Amplified.ToString();
+            SaveFields();
+        }
+    }
+    private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
+    {
+        if (item.Tele_Amplified < 3)
+        {
+            item.Tele_Amplified++;
+            LabelTeleAmplified.Text = item.Tele_Amplified.ToString();
+            SaveFields();
+
+        }
+    }
+
+    private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Coop = !item.Tele_Coop;
+        switch (item.Tele_Coop)
+        {
+            case false:
+                ButtonTeleCoopertition.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonTeleCoopertition.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
+    // Endgame
 
     private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
     {
@@ -186,6 +237,21 @@ public partial class MainPage : ContentPage
                 break;
             case true:
                 ButtonEndgameParked.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
+    private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
+    {
+        item.Endgame_OnStage = !item.Endgame_OnStage;
+        switch (item.Endgame_OnStage)
+        {
+            case false:
+                ButtonEndgameOnStage.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonEndgameOnStage.BackgroundColor = Colors.Green;
                 break;
         }
         SaveFields();
@@ -221,102 +287,8 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
-    private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
-    {
-        item.Endgame_OnStage = !item.Endgame_OnStage;
-        switch (item.Endgame_OnStage)
-        {
-            case false:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Green;
-                break;
-        }
-        SaveFields();
-    }
-
-    private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
-    {
-        item.Tele_Coop = !item.Tele_Coop;
-        switch (item.Tele_Coop)
-        {
-            case false:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Green;
-                break;
-        }
-        SaveFields();
-    }
-
     private void Comments_TextChanged(object sender, TextChangedEventArgs e)
     {
         item.Comments = Comments?.Text ?? "";
-    }
-
-    private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Auto_Speaker > 0)
-        {
-            item.Auto_Speaker--;
-            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Auto_Amp > 0)
-        {
-            item.Auto_Amp--;
-            LabelAutoAmp.Text = item.Auto_Amp.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Speaker > 0)
-        {
-            item.Tele_Speaker--;
-            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
-    {
-        if
-            (item.Tele_Amp > 0)
-        {
-            item.Tele_Amp--;
-            LabelTeleAmp.Text = item.Tele_Amp.ToString();
-            SaveFields();
-        }
-    }
-
-    private void ButtonTeleTrapMinus_Clicked(object sender, EventArgs e)
-    {
-        if(item.Tele_Trap > 0)
-        {
-            item.Tele_Trap--;
-            LabelTeleTrap.Text = item.Tele_Trap.ToString();
-            SaveFields();
-        }
-    }
-    private void ButtonTeleTrapPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Trap < 3)
-        {
-            item.Tele_Trap++;
-            LabelTeleTrap.Text = item.Tele_Trap.ToString();
-            SaveFields();
-
-        }
     }
 }
