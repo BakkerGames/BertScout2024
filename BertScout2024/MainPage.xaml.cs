@@ -287,6 +287,21 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
+    private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
+    {
+        item.Endgame_Trap = !item.Endgame_Trap;
+        switch (item.Endgame_Trap)
+        {
+            case false:
+                ButtonEndgameTrap.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonEndgameTrap.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
     private void Comments_TextChanged(object sender, TextChangedEventArgs e)
     {
         item.Comments = Comments?.Text ?? "";

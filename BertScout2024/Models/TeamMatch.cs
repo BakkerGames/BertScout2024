@@ -48,4 +48,6 @@ public class TeamMatch : BaseModel
     // overall
 
     public string Comments { get; set; } = "";
+
+    public int ScoutScore { get; set; } = 0;
 }

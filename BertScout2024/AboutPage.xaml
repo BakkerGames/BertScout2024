@@ -26,7 +26,7 @@
 
         <Label
             HorizontalOptions="Center"
-            Text="Written by: Scott"
+            Text="Written by: Anton, Zander, and Scott"
             />
         
     </VerticalStackLayout>
