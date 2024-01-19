@@ -201,13 +201,9 @@ public partial class MainPage : ContentPage
     }
     private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Tele_Amplified < 3)
-        {
             item.Tele_Amplified++;
             LabelTeleAmplified.Text = item.Tele_Amplified.ToString();
             SaveFields();
-
-        }
     }
 
     private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)

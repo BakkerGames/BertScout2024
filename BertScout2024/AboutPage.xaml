@@ -8,13 +8,13 @@
     Title="About"
     BackgroundColor="White"
     >
-    
+
     <VerticalStackLayout
         VerticalOptions="FillAndExpand">
-        
+
         <Label
             x:Name="LabelAboutVersion"
-            Text="Version: 2024.1.8.0"
+            Text="Version: 2024.1.19.0"
             HorizontalOptions="Center"
             />
 
