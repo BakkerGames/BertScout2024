@@ -7,7 +7,9 @@
     xmlns:local="clr-namespace:BertScout2024"
     BackgroundColor="#007F00"
     FlyoutBackground="#FFFFFF"
-    Shell.FlyoutBehavior="Flyout">
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TitleColor="White"
+    >
 
     <ShellContent
         Title="BERT Scouting App 2024"

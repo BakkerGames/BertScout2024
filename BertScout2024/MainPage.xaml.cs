@@ -201,13 +201,9 @@ public partial class MainPage : ContentPage
     }
     private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
     {
-        if (item.Tele_Amplified < 3)
-        {
             item.Tele_Amplified++;
             LabelTeleAmplified.Text = item.Tele_Amplified.ToString();
             SaveFields();
-
-        }
     }
 
     private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
@@ -282,6 +278,21 @@ public partial class MainPage : ContentPage
                 break;
             case true:
                 ButtonEndgameSpotlit.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
+    private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
+    {
+        item.Endgame_Trap = !item.Endgame_Trap;
+        switch (item.Endgame_Trap)
+        {
+            case false:
+                ButtonEndgameTrap.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonEndgameTrap.BackgroundColor = Colors.Green;
                 break;
         }
         SaveFields();

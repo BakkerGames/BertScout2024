@@ -24,7 +24,7 @@
 
             <Entry
                 x:Name="TeamNumber"
-                WidthRequest="70"
+                WidthRequest="100"
                 Keyboard="Numeric"
                 MaxLength="5"
                 Margin="4,10,0,0"
@@ -93,11 +93,6 @@
 
                     <VerticalStackLayout>
 
-                        <Label
-                            Margin="10,0,0,0"
-                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                            FontAttributes="Bold">Note</Label>
-
                         <HorizontalStackLayout
                             HorizontalOptions="Start"
                             >
@@ -129,6 +124,16 @@
                                 x:Name="ButtonAutoSpeakerPlus"
                                 Clicked="ButtonAutoSpeakerPlus_Clicked"
                                 Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoLeave"
+                                Clicked="ButtonAutoLeave_Clicked"
+                                BackgroundColor="Grey"
+                                WidthRequest="140"
+                                Text="Leave"
+                                Margin="20,0,0,0"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -172,28 +177,6 @@
 
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout
-                        Margin="10,0,0,0"
-                        >
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Button
-                                x:Name="ButtonAutoLeave"
-                                Clicked="ButtonAutoLeave_Clicked"
-                                BackgroundColor="Grey"
-                                WidthRequest="120"
-                                Text="Leave"
-                                Margin="10,32,0,0"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                        </HorizontalStackLayout>
-
-                    </VerticalStackLayout>
-
                 </HorizontalStackLayout>
 
                 <Label
@@ -208,13 +191,6 @@
                 <HorizontalStackLayout>
 
                     <VerticalStackLayout>
-
-                        <Label
-                            Margin="10,0,0,0"
-                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                            FontAttributes="Bold">
-                            Notes
-                        </Label>
 
                         <HorizontalStackLayout
                             HorizontalOptions="Start"
@@ -247,6 +223,16 @@
                                 x:Name="ButtonTeleSpeakerPlus"
                                 Clicked="ButtonTeleSpeakerPlus_Clicked"
                                 Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoopertition"
+                                Clicked="ButtonTeleCoopertition_Clicked"
+                                BackgroundColor="Grey"
+                                WidthRequest="140"
+                                Text="Coopertition"
+                                Margin="20,0,0,0"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -325,27 +311,8 @@
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>
-                    <VerticalStackLayout
-                    Margin="10,202,0,0">
 
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start">
-
-                            <Button
-                                x:Name="ButtonTeleCoopertition"
-                                Clicked="ButtonTeleCoopertition_Clicked"
-                                BackgroundColor="Grey"
-                                WidthRequest="200"
-                                Text="Coopertition"
-                                Margin="10,32,0,0"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                        </HorizontalStackLayout>
-
-                    </VerticalStackLayout>
                 </HorizontalStackLayout>
-
 
                 <Label
                     Text="Endgame"
@@ -400,6 +367,15 @@
                              FontSize="{OnPlatform WinUI=Small, Android=Large}"
                              />
 
+                        <Button
+                             x:Name="ButtonEndgameTrap"
+                             Clicked="ButtonEndgameTrap_Clicked"
+                             BackgroundColor="Grey"
+                             WidthRequest="120"
+                             Text="Trap"
+                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                             />
+
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout
@@ -437,9 +413,7 @@
                         FontSize="{OnPlatform WinUI=Small, Android=Large}"
                         />
 
-
                 </VerticalStackLayout>
-
 
             </VerticalStackLayout>
 

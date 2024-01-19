@@ -48,4 +48,15 @@ public class TeamMatch : BaseModel
     // overall
 
     public string Comments { get; set; } = "";
+
+    public int ScoutScore { get; set; } = 0;
+
+    [Newtonsoft.Json.JsonIgnore]
+    public string AsJson
+    {
+        get
+        { 
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this); 
+        }
+    }
 }

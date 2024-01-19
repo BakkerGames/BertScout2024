@@ -26,7 +26,7 @@ public partial class AirtablePage
             var showS = (count == 1) ? "" : "s";
             AirtableUpdatedLabel.Text = $"{count} record{showS} sent to Airtable";
             foreach (TeamMatch item in matches
-                .OrderBy(x => $"{x.MatchNumber,3}{x.MatchNumber,4}"))
+                .OrderBy(x => $"{x.MatchNumber,3}{x.TeamNumber,5}"))
             {
                 if (item.Changed)
                 {
@@ -34,7 +34,7 @@ public partial class AirtablePage
                     await db.SaveItemAsync(item);
                     if (AirtableResults.Text.Length > 0)
                         AirtableResults.Text += "\r\n";
-                    AirtableResults.Text += $"Match {item.MatchNumber,4} - Team {item.TeamNumber,4}";
+                    AirtableResults.Text += $"Match {item.MatchNumber,4} - Team {item.TeamNumber,5}";
                 }
             }
         }
