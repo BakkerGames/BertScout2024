@@ -6,10 +6,10 @@ namespace BertScout2024.Databases;
 
 public class AirtableService
 {
-    private const string AIRTABLE_BASE = "apppW4EmzeMC26IEO";
-    //private const string AIRTABLE_KEY = "keyIlZIGEOtUMLKSY";
+    private const string AIRTABLE_BASE = "appnXdbeXxrMQcxWD";
+    private const string AIRTABLE_TABLE = "tblwEZxIYqMwwKKra";
     private const string AIRTABLE_TOKEN =
-        "patC2YWa3BNdqbAhx.15673841cdc935966671f48843cdb32987710fb3170e5a0576fbc42a5909ad95";
+        "patfzISurpeeid0W1.0b1137a4a0e865dec23cec799d2faf4f7eaef82f5ac767c2ca380ac53200791a";
 
     public static async Task<int> AirtableSendRecords(List<TeamMatch> matches)
     {
