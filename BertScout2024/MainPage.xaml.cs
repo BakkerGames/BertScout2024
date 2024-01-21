@@ -208,14 +208,14 @@ public partial class MainPage : ContentPage
         if (item.Tele_Amped_Speaker > 0)
         {
             item.Tele_Amped_Speaker--;
-            LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+            LabelTeleAmpedSpeaker.Text = item.Tele_Amped_Speaker.ToString();
             SaveFields();
         }
     }
     private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
     {
             item.Tele_Amped_Speaker++;
-            LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+            LabelTeleAmpedSpeaker.Text = item.Tele_Amped_Speaker.ToString();
             SaveFields();
     }
 
