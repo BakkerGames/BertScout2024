@@ -99,7 +99,7 @@
 
                             <Label
                                 Text="Speaker:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=150, Android=50}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -145,7 +145,7 @@
 
                             <Label
                                 Text="Amplifier:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=150, Android=50}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -198,7 +198,7 @@
 
                             <Label
                                 Text="Speaker:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=150, Android=50}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -243,8 +243,44 @@
                             >
 
                             <Label
-                                Text="Amp:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                Text="Amped Speaker:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=50}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmplifiedMinus"
+                                Clicked="ButtonTeleAmplifiedMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text="-"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleAmpedSpeaker"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="30"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmplifiedPlus"
+                                Clicked="ButtonTeleAmplifiedPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Amplifier:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=50}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -272,43 +308,7 @@
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Amplified:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleAmplifiedMinus"
-                                Clicked="ButtonTeleAmplifiedMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text="-"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Label
-                                x:Name="LabelTeleAmplified"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="30"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleAmplifiedPlus"
-                                Clicked="ButtonTeleAmplifiedPlus_Clicked"
-                                Text=" + "
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                        </HorizontalStackLayout>
+                        </HorizontalStackLayout>    
 
                     </VerticalStackLayout>
 
