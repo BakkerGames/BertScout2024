@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bertrobotics.bertscout2024" android:versionCode="2" android:versionName="BertScout2024">
-	<application android:allowBackup="true" android:supportsRtl="true" android:label="Bert Scout 2024"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"  package="com.bertrobotics.bertscout2024" android:versionCode="3" android:versionName="BertScout2024">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true"  android:label="Bert Scout 2024"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

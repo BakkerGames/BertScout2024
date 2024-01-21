@@ -9,6 +9,7 @@
     FlyoutBackground="#FFFFFF"
     Shell.FlyoutBehavior="Flyout"
     Shell.TitleColor="White"
+    Title="BertScout2024"
     >
 
     <ShellContent
