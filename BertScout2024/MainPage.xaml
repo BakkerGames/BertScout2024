@@ -24,7 +24,7 @@
 
             <Entry
                 x:Name="TeamNumber"
-                WidthRequest="100"
+                WidthRequest="90"
                 Keyboard="Numeric"
                 MaxLength="5"
                 Margin="4,10,0,0"
@@ -99,7 +99,7 @@
 
                             <Label
                                 Text="Speaker:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=100, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -144,8 +144,8 @@
                             >
 
                             <Label
-                                Text="Amplifier:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                Text="Amp:"
+                                WidthRequest="{OnPlatform WinUI=100, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -198,7 +198,7 @@
 
                             <Label
                                 Text="Speaker:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=100, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -230,7 +230,7 @@
                                 x:Name="ButtonTeleCoopertition"
                                 Clicked="ButtonTeleCoopertition_Clicked"
                                 BackgroundColor="Grey"
-                                WidthRequest="140"
+                                WidthRequest="{OnPlatform WinUI=140, Android=170}"
                                 Text="Coopertition"
                                 Margin="20,0,0,0"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
@@ -244,7 +244,7 @@
 
                             <Label
                                 Text="Amp:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                WidthRequest="{OnPlatform WinUI=100, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -279,8 +279,8 @@
                             >
 
                             <Label
-                                Text="Amplified:"
-                                WidthRequest="{OnPlatform WinUI=100, Android=50}"
+                                Text="Amped Speaker:"
+                                WidthRequest="{OnPlatform WinUI=100, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -335,16 +335,28 @@
                             x:Name="ButtonEndgameParked"
                             Clicked="ButtonEndgameParked_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="120"
+                            WidthRequest="100"
+                            Padding="0,0,0,0"
                             Text="Parked"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
                         <Button
+                            x:Name="ButtonEndgameOnStage"
+                            Clicked="ButtonEndgameOnStage_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="120"
+                            Padding="0,0,0,0"
+                            Text="On Stage"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                        />
+
+                        <Button
                             x:Name="ButtonEndgameHarmony"
                             Clicked="ButtonEndgameHarmony_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="150"
+                            WidthRequest="120"
+                            Padding="0,0,0,0"
                             Text="Harmony"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
@@ -353,28 +365,21 @@
                             x:Name="ButtonEndgameSpotlit"
                             Clicked="ButtonEndgameSpotlit_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="120"
+                            WidthRequest="100"
+                            Padding="0,0,0,0"
                             Text="Spotlit"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
                         <Button
-                             x:Name="ButtonEndgameOnStage"
-                             Clicked="ButtonEndgameOnStage_Clicked"
-                             BackgroundColor="Grey"
-                             WidthRequest="120"
-                             Text="On Stage"
-                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                             />
-
-                        <Button
-                             x:Name="ButtonEndgameTrap"
-                             Clicked="ButtonEndgameTrap_Clicked"
-                             BackgroundColor="Grey"
-                             WidthRequest="120"
-                             Text="Trap"
-                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                             />
+                            x:Name="ButtonEndgameTrap"
+                            Clicked="ButtonEndgameTrap_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="70"
+                            Padding="0,0,0,0"
+                            Text="Trap"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
 
                     </HorizontalStackLayout>
 
