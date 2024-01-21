@@ -66,7 +66,7 @@ public partial class MainPage
 
         LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
         LabelTeleAmp.Text = item.Tele_Amp.ToString();
-        LabelTeleAmpedSpeaker.Text = item.Tele_Amped_Speaker.ToString();
+        LabelTeleAmplified.Text = item.Tele_Amplified.ToString();
 
         ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
         ButtonEndgameOnStage.BackgroundColor = item.Endgame_OnStage ? Colors.Green : Colors.Gray;

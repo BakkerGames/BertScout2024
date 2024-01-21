@@ -29,15 +29,13 @@ public class TeamMatch : BaseModel
     public bool Auto_Leave { get; set; }
     public int Auto_Speaker { get; set; }
     public int Auto_Amp { get; set; }
-    public int Auto_Points { get; set; } = 0;
 
     // teleop
 
     public int Tele_Speaker { get; set; }
     public int Tele_Amp { get; set; }
-    public int Tele_Amped_Speaker { get; set; }
+    public int Tele_Amplified { get; set; }
     public bool Tele_Coop { get; set; }
-    public int Tele_Points { get; set; }
 
     // end game
 
@@ -46,8 +44,6 @@ public class TeamMatch : BaseModel
     public bool Endgame_Spotlit { get; set; }
     public bool Endgame_Parked { get; set; }
     public bool Endgame_Trap { get; set; }
-
-    public int Endgame_Points { get; set; }
 
     // overall
 
