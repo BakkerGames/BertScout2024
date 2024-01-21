@@ -83,6 +83,19 @@ public partial class MainPage : ContentPage
     {
         // store the screen fields in the record
         StoreFields(item);
+
+        item.Auto_Points = item.Auto_Speaker * 5 + item.Auto_Amp * 2;
+        if (item.Auto_Leave) item.Auto_Points += 2;
+
+        item.Tele_Points = item.Tele_Amp + item.Tele_Speaker * 2 + item.Tele_Amped_Speaker * 5;
+
+        item.Endgame_Points = 0;
+        item.Endgame_Points += (item.Endgame_Trap ? 5 : 0);
+        item.Endgame_Points += (item.Endgame_Parked ? 1 : 0);
+        item.Endgame_Points += (item.Endgame_OnStage ? 3 : 0);
+        item.Endgame_Points += (item.Endgame_Spotlit ? 1 : 0);
+        item.Endgame_Points += (item.Endgame_Harmony ? 2 : 0);
+
         // save to database
         item.Changed = true;
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
