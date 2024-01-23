@@ -37,19 +37,29 @@ public partial class ListPage
 
         List<TeamMatch> matches = await db.GetItemsAsync();
         foreach (TeamMatch item in matches
-            .OrderBy(x => $"{x.MatchNumber,3}{x.MatchNumber,4}"))
+            .OrderBy(x => $"{x.MatchNumber,3}{x.TeamNumber,5}"))
         {
-            matchItem.Add(new MatchItem() { Match = $"Match {item.MatchNumber,4} - Team {item.TeamNumber,4} - {item.ScoutName}" });
+            matchItem.Add(new MatchItem() { Match = $"Match {item.MatchNumber,3} - Team {item.TeamNumber,5} - {item.ScoutName}" });
         }
     }
 
     private async void OpenMatchButton_Clicked(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
-        string matchSub = btn.Text.Substring(6, 4);
+        
+        // safer way to get match and team - no hardcoded positions
+        int pos1 = btn.Text.IndexOf('-');
+        int pos2 = btn.Text.IndexOf('-', pos1 + 1);
+        string matchSub = btn.Text[..pos1].Replace("Match", "").Trim();
+        string teamSub = btn.Text[(pos1 + 1)..pos2].Replace("Team", "").Trim();
+        string name = btn.Text[(pos2 + 1)..].Trim();
         int match = int.Parse(matchSub);
-        int team = int.Parse(btn.Text.Substring(18, btn.Text.IndexOf("-", 18) - 19));
-        string name = btn.Text.Substring(25);
+        int team = int.Parse(teamSub);
+
+        //string matchSub = btn.Text.Substring(6, 4);
+        //int match = int.Parse(matchSub);
+        //int team = int.Parse(btn.Text.Substring(18, btn.Text.IndexOf("-", 18) - 19));
+        //string name = btn.Text.Substring(25);
 
         Globals.item = await db.GetTeamMatchAsync(team, match);
         Globals.viewFormBody = true;
