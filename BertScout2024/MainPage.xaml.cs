@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 {
     private readonly LocalDatabase db = new();
 
-    private TeamMatch item = new();
+    private TeamMatch item = Globals.item;
 
     public MainPage()
     {
@@ -18,6 +18,28 @@ public partial class MainPage : ContentPage
             CommentPicker.Items.Add(s);
         }
     }
+    private void MainPage_Loaded(object sender, EventArgs e)
+    {
+        if (Globals.viewFormBody)
+        {
+            TeamNumber.Text = Globals.item.TeamNumber.ToString();
+            MatchNumber.Text = Globals.item.MatchNumber.ToString();
+            ScoutName.Text = Globals.item.ScoutName;
+
+            this.item = Globals.item;
+            Globals.viewFormBody = false;
+
+            Load_Match();
+        }
+    }
+
+    private void Load_Match()
+    {
+        // show the values on the screen
+        FillFields(item);
+        // disable the top row while entering
+        EnableTopRow(false);
+    }
 
     private async void Start_Clicked(object sender, EventArgs e)
     {
@@ -26,6 +48,7 @@ public partial class MainPage : ContentPage
             // check that all fields are valid
             if (!ValidateTeamNumber(TeamNumber.Text)) return;
             if (!ValidateMatchNumber(MatchNumber.Text)) return;
+
             // get integer values for later use
             var team = int.Parse(TeamNumber.Text);
             var match = int.Parse(MatchNumber.Text);
@@ -66,11 +89,7 @@ public partial class MainPage : ContentPage
                 Comments = "",
             };
 
-            // show the values on the screen
-            FillFields(item);
-
-            // disable the top row while entering
-            EnableTopRow(false);
+            Load_Match();
         }
         else if (Start.Text == "Save")
         {
