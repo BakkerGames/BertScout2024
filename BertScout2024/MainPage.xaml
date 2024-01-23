@@ -10,6 +10,7 @@
 
     <StackLayout
         VerticalOptions="Start"
+        Loaded="MainPage_Loaded"
         >
 
         <HorizontalStackLayout
