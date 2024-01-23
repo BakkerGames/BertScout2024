@@ -48,13 +48,21 @@ public partial class MainPage : ContentPage
             // check that all fields are valid
             if (!ValidateTeamNumber(TeamNumber.Text)) return;
             if (!ValidateMatchNumber(MatchNumber.Text)) return;
-            if (!ValidateScoutName(ScoutName.Text)) return;
+
             // get integer values for later use
             var team = int.Parse(TeamNumber.Text);
             var match = int.Parse(MatchNumber.Text);
+
+            // get existing record
+            item = await db.GetTeamMatchAsync(team, match);
+
+            // check they entered a scout name
+            if (item == null && !ValidateScoutName(ScoutName.Text)) return;
+
             // update screen fields without leading zeros
             TeamNumber.Text = team.ToString();
             MatchNumber.Text = match.ToString();
+            
             // delete the match
             if (ScoutName.Text == "DELETE")
             {
@@ -72,8 +80,6 @@ public partial class MainPage : ContentPage
                 return;
             }
 
-            // get existing record
-            item = await db.GetTeamMatchAsync(team, match);
             // if not found, create new record
             item ??= new()
             {
@@ -119,9 +125,8 @@ public partial class MainPage : ContentPage
 
         // save to database
         item.Changed = true;
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        db.SaveItemAsync(item);
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        var taskSave = Task.Run(() => db.SaveItemAsync(item));
+        taskSave.Wait();
     }
 
     private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,9 +156,9 @@ public partial class MainPage : ContentPage
     }
     private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
     {
-            item.Auto_Speaker++;
-            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
-            SaveFields();
+        item.Auto_Speaker++;
+        LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+        SaveFields();
     }
 
     private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
@@ -176,15 +181,7 @@ public partial class MainPage : ContentPage
     private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
     {
         item.Auto_Leave = !item.Auto_Leave;
-        switch (item.Auto_Leave)
-        {
-            case false:
-                ButtonAutoLeave.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoLeave.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
@@ -202,9 +199,9 @@ public partial class MainPage : ContentPage
     }
     private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
     {
-            item.Tele_Speaker++;
-            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
-            SaveFields();
+        item.Tele_Speaker++;
+        LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+        SaveFields();
     }
 
     private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
@@ -219,9 +216,9 @@ public partial class MainPage : ContentPage
     }
     private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
     {
-            item.Tele_Amp++;
-            LabelTeleAmp.Text = item.Tele_Amp.ToString();
-            SaveFields();
+        item.Tele_Amp++;
+        LabelTeleAmp.Text = item.Tele_Amp.ToString();
+        SaveFields();
     }
 
     private void ButtonTeleAmplifiedMinus_Clicked(object sender, EventArgs e)
@@ -235,23 +232,15 @@ public partial class MainPage : ContentPage
     }
     private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
     {
-            item.Tele_Amped_Speaker++;
-            LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
-            SaveFields();
+        item.Tele_Amped_Speaker++;
+        LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+        SaveFields();
     }
 
     private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
     {
         item.Tele_Coop = !item.Tele_Coop;
-        switch (item.Tele_Coop)
-        {
-            case false:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonTeleCoopertition.BackgroundColor = (item.Tele_Coop ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
@@ -260,75 +249,35 @@ public partial class MainPage : ContentPage
     private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
     {
         item.Endgame_Parked = !item.Endgame_Parked;
-        switch (item.Endgame_Parked)
-        {
-            case false:
-                ButtonEndgameParked.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameParked.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonEndgameParked.BackgroundColor = (item.Endgame_Parked ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
     private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
     {
         item.Endgame_OnStage = !item.Endgame_OnStage;
-        switch (item.Endgame_OnStage)
-        {
-            case false:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonEndgameOnStage.BackgroundColor = (item.Endgame_OnStage ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
     private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
     {
         item.Endgame_Harmony = !item.Endgame_Harmony;
-        switch (item.Endgame_Harmony)
-        {
-            case false:
-                ButtonEndgameHarmony.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameHarmony.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonEndgameHarmony.BackgroundColor = (item.Endgame_Harmony ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
     private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
     {
         item.Endgame_Spotlit = !item.Endgame_Spotlit;
-        switch (item.Endgame_Spotlit)
-        {
-            case false:
-                ButtonEndgameSpotlit.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameSpotlit.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonEndgameSpotlit.BackgroundColor = (item.Endgame_Spotlit ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
     private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
     {
         item.Endgame_Trap = !item.Endgame_Trap;
-        switch (item.Endgame_Trap)
-        {
-            case false:
-                ButtonEndgameTrap.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameTrap.BackgroundColor = Colors.Green;
-                break;
-        }
+        ButtonEndgameTrap.BackgroundColor = (item.Endgame_Trap ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 

@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Text.Json;
 
 namespace BertScout2024.Models;
 
@@ -46,7 +47,6 @@ public class TeamMatch : BaseModel
     public bool Endgame_Spotlit { get; set; }
     public bool Endgame_Parked { get; set; }
     public bool Endgame_Trap { get; set; }
-
     public int Endgame_Points { get; set; }
 
     // overall
@@ -55,12 +55,8 @@ public class TeamMatch : BaseModel
 
     public int ScoutScore { get; set; } = 0;
 
-    [Newtonsoft.Json.JsonIgnore]
-    public string AsJson
+    public override string ToString()
     {
-        get
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
+        return JsonSerializer.Serialize(this, WriteOptions);
     }
 }
