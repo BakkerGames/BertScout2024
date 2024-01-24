@@ -11,4 +11,9 @@ public partial class AboutPage : ContentPage
 		InitializeComponent();
 		LabelAboutDatabase.Text = $"Database path: {db.DatabaseDirPath}";
 	}
+
+	public void DarkModeButton_Clicked(object sender, EventArgs e)
+	{
+		
+	}
 }

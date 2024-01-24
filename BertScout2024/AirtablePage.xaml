@@ -6,7 +6,7 @@
     x:Name="cp"
     x:Class="BertScout2024.AirtablePage"
     Title="Airtable"
-    BackgroundColor="White"
+    BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
     >
     
     <VerticalStackLayout
@@ -37,7 +37,7 @@
         <ScrollView
             x:Name="ScrollResults"
             VerticalScrollBarVisibility="Always"
-            BackgroundColor="White">
+            BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}">
 
             <Label
                 x:Name="AirtableResults" 
