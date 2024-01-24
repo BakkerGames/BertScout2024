@@ -5,7 +5,7 @@
     x:DataType="ContentPage"
     x:Name="cp"
     x:Class="BertScout2024.MainPage"
-    BackgroundColor="White"
+    BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
     >
 
     <StackLayout

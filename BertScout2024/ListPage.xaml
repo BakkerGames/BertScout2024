@@ -6,7 +6,7 @@
     x:Class="BertScout2024.ListPage"
     x:Name="cpListMatches"
     Title="List Matches"
-    BackgroundColor="White"
+    BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
     >
 
     <ContentPage.BindingContext>
