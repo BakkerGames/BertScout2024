@@ -415,6 +415,7 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         HeightRequest="150"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=Green}"
                         Text=""
                         FontSize="{OnPlatform WinUI=Small, Android=Large}"
                         />
