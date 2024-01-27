@@ -108,7 +108,7 @@
                                 x:Name="ButtonAutoSpeakerMinus" 
                                 Clicked="ButtonAutoSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
-                                Text="-"
+                                Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
@@ -154,7 +154,7 @@
                                 x:Name="ButtonAutoAmpMinus"
                                 Clicked="ButtonAutoAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
-                                Text="-"
+                                Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -207,7 +207,7 @@
                                 x:Name="ButtonTeleSpeakerMinus"
                                 Clicked="ButtonTeleSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
-                                Text="-"
+                                Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -253,7 +253,7 @@
                                 x:Name="ButtonTeleAmpMinus"
                                 Clicked="ButtonTeleAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
-                                Text="-"
+                                Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -289,7 +289,7 @@
                                 x:Name="ButtonTeleAmplifiedMinus"
                                 Clicked="ButtonTeleAmplifiedMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
-                                Text="-"
+                                Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 

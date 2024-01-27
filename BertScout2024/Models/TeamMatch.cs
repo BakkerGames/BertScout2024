@@ -38,16 +38,16 @@ public class TeamMatch : BaseModel
     public int Tele_Amp { get; set; }
     public int Tele_Amped_Speaker { get; set; }
     public bool Tele_Coop { get; set; }
-    public int Tele_Points { get; set; }
+    public int Tele_Points { get; set; } = 0;
 
     // end game
 
+    public bool Endgame_Parked { get; set; }
     public bool Endgame_OnStage { get; set; }
     public bool Endgame_Harmony { get; set; }
     public bool Endgame_Spotlit { get; set; }
-    public bool Endgame_Parked { get; set; }
     public bool Endgame_Trap { get; set; }
-    public int Endgame_Points { get; set; }
+    public int Endgame_Points { get; set; } = 0;
 
     // overall
 
