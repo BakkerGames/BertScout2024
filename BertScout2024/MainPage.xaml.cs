@@ -62,7 +62,7 @@ public partial class MainPage : ContentPage
             // update screen fields without leading zeros
             TeamNumber.Text = team.ToString();
             MatchNumber.Text = match.ToString();
-            
+
             // delete the match
             if (ScoutName.Text == "DELETE")
             {
@@ -108,13 +108,18 @@ public partial class MainPage : ContentPage
 
     private void SaveFields()
     {
-        // store the screen fields in the record
+        // store the screen fields into the record
         StoreFields(item);
 
-        item.Auto_Points = item.Auto_Speaker * 5 + item.Auto_Amp * 2;
+        item.Auto_Points = 0;
+        item.Auto_Points += item.Auto_Amp * 2;
+        item.Auto_Points += item.Auto_Speaker * 5;
         if (item.Auto_Leave) item.Auto_Points += 2;
 
-        item.Tele_Points = item.Tele_Amp + item.Tele_Speaker * 2 + item.Tele_Amped_Speaker * 5;
+        item.Tele_Points = 0;
+        item.Tele_Points += item.Tele_Amp;
+        item.Tele_Points += item.Tele_Speaker * 2;
+        item.Tele_Points += item.Tele_Amped_Speaker * 5;
 
         item.Endgame_Points = 0;
         item.Endgame_Points += (item.Endgame_Trap ? 5 : 0);
@@ -248,36 +253,51 @@ public partial class MainPage : ContentPage
 
     private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Parked = !item.Endgame_Parked;
-        ButtonEndgameParked.BackgroundColor = (item.Endgame_Parked ? Colors.Green : Colors.Gray);
+        SetButton_Parked(!item.Endgame_Parked);
+        if (item.Endgame_Parked)
+        {
+            SetButton_OnStage(false);
+            SetButton_Harmony(false);
+            SetButton_Spotlit(false);
+        }
         SaveFields();
     }
 
     private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_OnStage = !item.Endgame_OnStage;
-        ButtonEndgameOnStage.BackgroundColor = (item.Endgame_OnStage ? Colors.Green : Colors.Gray);
+        SetButton_OnStage(!item.Endgame_OnStage);
+        if (item.Endgame_OnStage)
+        {
+            SetButton_Parked(false);
+        }
         SaveFields();
     }
 
     private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Harmony = !item.Endgame_Harmony;
-        ButtonEndgameHarmony.BackgroundColor = (item.Endgame_Harmony ? Colors.Green : Colors.Gray);
+        SetButton_Harmony(!item.Endgame_Harmony);
+        if (item.Endgame_Harmony)
+        {
+            SetButton_OnStage(true);
+            SetButton_Parked(false);
+        }
         SaveFields();
     }
 
     private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Spotlit = !item.Endgame_Spotlit;
-        ButtonEndgameSpotlit.BackgroundColor = (item.Endgame_Spotlit ? Colors.Green : Colors.Gray);
+        SetButton_Spotlit(!item.Endgame_Spotlit);
+        if (item.Endgame_Spotlit)
+        {
+            SetButton_OnStage(true);
+            SetButton_Parked(false);
+        }
         SaveFields();
     }
 
     private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Trap = !item.Endgame_Trap;
-        ButtonEndgameTrap.BackgroundColor = (item.Endgame_Trap ? Colors.Green : Colors.Gray);
+        SetButton_Trap(!item.Endgame_Trap);
         SaveFields();
     }
 
@@ -285,4 +305,38 @@ public partial class MainPage : ContentPage
     {
         item.Comments = Comments?.Text ?? "";
     }
+
+    #region ButtonEvents
+
+    private void SetButton_Parked(bool value)
+    {
+        item.Endgame_Parked = value;
+        ButtonEndgameParked.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+    }
+
+    private void SetButton_OnStage(bool value)
+    {
+        item.Endgame_OnStage = value;
+        ButtonEndgameOnStage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+    }
+
+    private void SetButton_Harmony(bool value)
+    {
+        item.Endgame_Harmony = value;
+        ButtonEndgameHarmony.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+    }
+
+    private void SetButton_Spotlit(bool value)
+    {
+        item.Endgame_Spotlit = value;
+        ButtonEndgameSpotlit.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+    }
+
+    private void SetButton_Trap(bool value)
+    {
+        item.Endgame_Trap = value;
+        ButtonEndgameTrap.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+    }
+
+    #endregion
 }

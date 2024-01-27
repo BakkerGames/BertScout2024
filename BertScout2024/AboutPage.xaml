@@ -15,7 +15,7 @@
 
         <Label
             x:Name="LabelAboutVersion"
-            Text="Version: 2024.1.23.0"
+            Text="Version: 2024.1.27.0"
             HorizontalOptions="Center"
             />
 
@@ -27,7 +27,7 @@
 
         <Label
             HorizontalOptions="Center"
-            Text="Written by: Anton, Keith, Zander, and Scott"
+            Text="Written by: Anton, Keith, Evan, Zander, and Scott"
             />
 
     </VerticalStackLayout>

@@ -31,21 +31,25 @@ public class AirtableService
                 Fields fields = new();
                 foreach (FieldInfo fi in myFieldInfo)
                 {
-                    // name is "<name>stuff", so just get the name part
-                    int pos1 = fi.Name.IndexOf('<') + 1;
-                    int pos2 = fi.Name.IndexOf('>');
-                    string name = fi.Name[pos1..pos2];
-                    // these fields are not in airtable
-                    if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
-                    object? value = fi.GetValue(match);
-                    if (value is bool v) // change to integers
+                    if (string.IsNullOrEmpty(fi.Name)) continue;
+                    if (fi.Name.Contains('<') && fi.Name.Contains('>'))
                     {
-                        value = v ? 1 : 0;
+                        // name is "<name>stuff", so just get the name part
+                        int pos1 = fi.Name.IndexOf('<') + 1;
+                        int pos2 = fi.Name.IndexOf('>');
+                        string name = fi.Name[pos1..pos2];
+                        // these fields are not in airtable
+                        if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
+                        object? value = fi.GetValue(match);
+                        if (value is bool v) // change to integers
+                        {
+                            value = v ? 1 : 0;
+                        }
+                        fields.AddField(name, value);
                     }
-                    fields.AddField(name, value);
                 }
                 newRecordList.Add(fields);
             }
@@ -54,21 +58,25 @@ public class AirtableService
                 IdFields idFields = new(match.AirtableId);
                 foreach (FieldInfo fi in myFieldInfo)
                 {
-                    // name is "<name>stuff", so just get the name part
-                    int pos1 = fi.Name.IndexOf('<') + 1;
-                    int pos2 = fi.Name.IndexOf('>');
-                    string name = fi.Name[pos1..pos2];
-                    // these fields are not in airtable
-                    if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
-                    object? value = fi.GetValue(match);
-                    if (value is bool v) // change to integers
+                    if (string.IsNullOrEmpty(fi.Name)) continue;
+                    if (fi.Name.Contains('<') && fi.Name.Contains('>'))
                     {
-                        value = v ? 1 : 0;
+                        // name is "<name>stuff", so just get the name part
+                        int pos1 = fi.Name.IndexOf('<') + 1;
+                        int pos2 = fi.Name.IndexOf('>');
+                        string name = fi.Name[pos1..pos2];
+                        // these fields are not in airtable
+                        if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
+                        object? value = fi.GetValue(match);
+                        if (value is bool v) // change to integers
+                        {
+                            value = v ? 1 : 0;
+                        }
+                        idFields.AddField(name, value);
                     }
-                    idFields.AddField(name, value);
                 }
                 updatedRecordList.Add(idFields);
             }
