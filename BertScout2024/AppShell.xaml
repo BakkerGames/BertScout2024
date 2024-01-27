@@ -13,7 +13,7 @@
     >
 
     <ShellContent
-        Title="BERT Scouting App 2024"
+        Title="BERT Scouting 2024"
         FlexLayout.AlignSelf="Center"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
