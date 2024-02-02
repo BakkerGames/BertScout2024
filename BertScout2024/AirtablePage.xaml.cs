@@ -34,7 +34,7 @@ public partial class AirtablePage
                     await db.SaveItemAsync(item);
                     if (AirtableResults.Text.Length > 0)
                         AirtableResults.Text += "\r\n";
-                    AirtableResults.Text += $"Match {item.MatchNumber,4} - Team {item.TeamNumber,5}";
+                    AirtableResults.Text += $"Match {item.MatchNumber,3} - Team {item.TeamNumber,5}";
                 }
             }
         }

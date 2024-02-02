@@ -117,7 +117,7 @@
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
-                                WidthRequest="30"
+                                WidthRequest="70"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -163,7 +163,7 @@
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
-                                WidthRequest="30"
+                                WidthRequest="70"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -216,7 +216,7 @@
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
-                                WidthRequest="30"
+                                WidthRequest="70"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -262,7 +262,7 @@
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
-                                WidthRequest="30"
+                                WidthRequest="70"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
@@ -298,7 +298,7 @@
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
-                                WidthRequest="30"
+                                WidthRequest="70"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 

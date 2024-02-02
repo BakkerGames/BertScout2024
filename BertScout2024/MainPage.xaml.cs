@@ -98,7 +98,8 @@ public partial class MainPage : ContentPage
             // prepare for next match
             TeamNumber.Text = "";
             var match = int.Parse(MatchNumber.Text);
-            MatchNumber.Text = (match + 1).ToString();
+            var newMatch = Math.Min(match + 1, 999);
+            MatchNumber.Text = newMatch.ToString();
             ClearAllFields();
             // re-enable top row and focus on team number
             EnableTopRow(true);

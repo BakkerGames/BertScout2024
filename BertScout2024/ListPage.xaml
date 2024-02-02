@@ -21,6 +21,7 @@
                 Clicked="ShowMatchButton_Clicked"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
+                Margin="0,10,0,0"
             />
         </ListView.Header>
         <ListView.ItemTemplate>
@@ -30,6 +31,7 @@
                     x:Name="{Binding Match}"
                     Text="{Binding Match}"
                     Clicked="OpenMatchButton_Clicked"
+                    Margin="0,10,0,0"
                     />
                 </ViewCell>
             </DataTemplate>
