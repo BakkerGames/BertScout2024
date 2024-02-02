@@ -141,9 +141,9 @@ public partial class MainPage : ContentPage
             return;
         if (Comments.Text == null)
             Comments.Text = "";
-        else if (Comments.Text.Length > 0)
+        else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
             Comments.Text += " ";
-        Comments.Text += CommentPicker.SelectedItem.ToString();
+        Comments.Text += CommentPicker.SelectedItem.ToString() + " ";
         CommentPicker.SelectedIndex = -1;
         SaveFields();
     }

@@ -131,7 +131,9 @@ public class AirtableService
                 foreach (TeamMatch match in matches)
                 {
                     if (match.Uuid == null) continue;
-                    if (match.Uuid == rec.GetField("Uuid")?.ToString())
+                    var uuid = rec.GetField("Uuid");
+                    if (uuid == null) continue;
+                    if (match.Uuid.Equals(uuid.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         match.AirtableId = rec.Id;
                         finalCount++;
