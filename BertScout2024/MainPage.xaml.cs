@@ -47,7 +47,7 @@ public partial class MainPage : ContentPage
         // disable the top row while entering
         EnableTopRow(false);
     }
-    IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
+    //IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
     private async void Start_Clicked(object sender, EventArgs e)
     {
         if (Start.Text == "Start")
@@ -154,7 +154,6 @@ public partial class MainPage : ContentPage
         // save to database
         item.Changed = true;
         var taskSave = Task.Run(() => db.SaveItemAsync(item));
-        taskSave.Wait();
         taskSave.Wait();
     }
 
