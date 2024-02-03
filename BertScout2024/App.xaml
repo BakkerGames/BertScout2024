@@ -45,6 +45,15 @@
                 <Setter Property="Margin" Value="10,3,0,0" />
             </Style>
 
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=White, Dark=#aaaaaa}" />
+                <Setter Property="BackgroundColor" Value="Green" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="Margin" Value="10,3,0,0" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

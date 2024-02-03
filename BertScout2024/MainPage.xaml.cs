@@ -13,9 +13,16 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         CommentPicker.Items.Clear();
+        ScorePicker.Items.Clear();
+
         foreach (string s in CommentList)
         {
             CommentPicker.Items.Add(s);
+        }
+
+        foreach (string s in ScoringList)
+        {
+            ScorePicker.Items.Add(s);
         }
     }
     private void MainPage_Loaded(object sender, EventArgs e)
@@ -40,7 +47,7 @@ public partial class MainPage : ContentPage
         // disable the top row while entering
         EnableTopRow(false);
     }
-
+    IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
     private async void Start_Clicked(object sender, EventArgs e)
     {
         if (Start.Text == "Start")
@@ -94,7 +101,18 @@ public partial class MainPage : ContentPage
         else if (Start.Text == "Save")
         {
             // store the screen fields in the record
-            SaveFields();
+            SaveFields(); 
+            
+            /*
+            if (profiles.Contains(ConnectionProfile.WiFi) && false)
+            {
+                AirtablePage aPage = new AirtablePage();
+                var uselessTask = Task.Run(() => aPage.AirtableSender());
+                uselessTask.Wait();
+                var useless = uselessTask.Result;
+            }
+            */
+
             // prepare for next match
             TeamNumber.Text = "";
             var match = int.Parse(MatchNumber.Text);
@@ -104,8 +122,12 @@ public partial class MainPage : ContentPage
             // re-enable top row and focus on team number
             EnableTopRow(true);
             TeamNumber.Focus();
+
+           
         }
     }
+
+    
 
     private void SaveFields()
     {
@@ -133,6 +155,7 @@ public partial class MainPage : ContentPage
         item.Changed = true;
         var taskSave = Task.Run(() => db.SaveItemAsync(item));
         taskSave.Wait();
+        taskSave.Wait();
     }
 
     private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,6 +182,18 @@ public partial class MainPage : ContentPage
             LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
             SaveFields();
         }
+    }
+
+    private void ScorePicker_Picked(object sender, EventArgs e) {
+        if (ScorePicker.SelectedIndex < 0)
+            return;
+        if (Comments.Text == null)
+            Comments.Text = "";
+        else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
+            Comments.Text += " ";
+        Comments.Text += " - " + ScorePicker.SelectedItem.ToString() + " ";
+        CommentPicker.SelectedIndex = -1;
+        SaveFields();
     }
     private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
     {
