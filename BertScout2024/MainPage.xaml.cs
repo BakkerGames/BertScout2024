@@ -47,7 +47,7 @@ public partial class MainPage : ContentPage
         // disable the top row while entering
         EnableTopRow(false);
     }
-    IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
+    //IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
     private async void Start_Clicked(object sender, EventArgs e)
     {
         if (Start.Text == "Start")
@@ -155,7 +155,6 @@ public partial class MainPage : ContentPage
         item.Changed = true;
         var taskSave = Task.Run(() => db.SaveItemAsync(item));
         taskSave.Wait();
-        taskSave.Wait();
     }
 
     private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,8 +191,7 @@ public partial class MainPage : ContentPage
         else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
             Comments.Text += " ";
         Comments.Text += " - " + ScorePicker.SelectedItem.ToString() + ". ";
-        CommentPicker.SelectedIndex = -1;
-        item.ScoutScore += int.Parse(ScorePicker.SelectedItem.ToString()); 
+        item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0"); 
         ScorePicker.SelectedIndex = -1;
         SaveFields();
     }
