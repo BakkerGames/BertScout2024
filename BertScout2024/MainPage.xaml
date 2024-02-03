@@ -105,8 +105,7 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoSpeakerMinus" 
-                                Clicked="ButtonAutoSpeakerMinus_Clicked"
+                                x:Name="ButtonAutoSpeakerMinus" TextColor="Black"                 Clicked="ButtonAutoSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
@@ -151,8 +150,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoAmpMinus"
-                                Clicked="ButtonAutoAmpMinus_Clicked"
+                                x:Name="ButtonAutoAmpMinus" TextColor="Black" 
+                               Clicked="ButtonAutoAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
@@ -204,7 +203,7 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleSpeakerMinus"
+                                x:Name="ButtonTeleSpeakerMinus" TextColor="Black"
                                 Clicked="ButtonTeleSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
@@ -250,7 +249,7 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleAmpMinus"
+                                x:Name="ButtonTeleAmpMinus" TextColor="Black" 
                                 Clicked="ButtonTeleAmpMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
@@ -286,7 +285,7 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleAmplifiedMinus"
+                                x:Name="ButtonTeleAmplifiedMinus" TextColor="Black" 
                                 Clicked="ButtonTeleAmplifiedMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
@@ -401,6 +400,18 @@
                             TextColor="Green"
                             BackgroundColor="Green"
                             WidthRequest="100"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40"
+                            Margin="10,0,0,5"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Picker
+                            x:Name="ScorePicker"
+                            SelectedIndexChanged="ScorePicker_Picked"
+                            TextColor="Green"
+                            BackgroundColor="Green"
+                            WidthRequest="50"
                             HorizontalOptions="CenterAndExpand"
                             HeightRequest="40"
                             Margin="10,0,0,5"

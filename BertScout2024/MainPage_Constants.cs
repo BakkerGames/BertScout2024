@@ -4,18 +4,18 @@ public partial class MainPage
 {
     private readonly List<string> CommentList = new()
     {
-         "Defense good.",
-         "Speed good.",
-         "Efficiency good.",
-         "Auto good.",
-         "Stability good.",
-         "Accuracy good.",
-         "Skilled human player.",
+         "Defense",
+         "Speed",
+         "Efficiency",
+         "Auto",
+         "Stability",
+         "Accuracy",
+         "Human player",
+         "Did multiple traps",
+         " ",
          "Can hang on chain.",
          "Can hang second on chain.",
          "Can go under the chain.",
-         "2 Traps.",
-         "3 Traps.",
          "Can't pick from the source.",
          "Can't pick from the floor.",
          "Can only score Amp.",
@@ -27,5 +27,15 @@ public partial class MainPage
          "Yellow card.",
          "Red card.",
          "DON'T PICK!",
+    };
+
+    private readonly List<string> ScoringList = new()
+    {
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
     };
 }
