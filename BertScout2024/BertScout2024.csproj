@@ -47,14 +47,14 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\bert_logo_128.png" Color="#FFFFFF" />
+		<MauiIcon Include="Resources\AppIcon\bert_logo_icon.png" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\bert_logo.png" Color="#FFFFFF" BaseSize="316,336" />
+		<MauiSplashScreen Include="Resources\Splash\bert_logo.png" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\bert_logo.png" BaseSize="316,336" />
+		<MauiImage Update="Resources\Images\bert_logo.png" BaseSize="128,128" />
 		
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
