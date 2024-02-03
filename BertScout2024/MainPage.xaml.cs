@@ -191,8 +191,10 @@ public partial class MainPage : ContentPage
             Comments.Text = "";
         else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
             Comments.Text += " ";
-        Comments.Text += " - " + ScorePicker.SelectedItem.ToString() + " ";
+        Comments.Text += " - " + ScorePicker.SelectedItem.ToString() + ". ";
         CommentPicker.SelectedIndex = -1;
+        item.ScoutScore += int.Parse(ScorePicker.SelectedItem.ToString()); 
+        ScorePicker.SelectedIndex = -1;
         SaveFields();
     }
     private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
