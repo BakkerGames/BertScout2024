@@ -47,6 +47,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\bert_logo_64.png" />
 		<MauiIcon Include="Resources\AppIcon\bert_logo_icon.png" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Splash Screen -->
@@ -61,6 +62,10 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\bert_logo_64.png" />
 	</ItemGroup>
 
 	<ItemGroup>
