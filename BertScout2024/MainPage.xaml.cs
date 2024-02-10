@@ -190,7 +190,7 @@ public partial class MainPage : ContentPage
             Comments.Text = "";
         else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
             Comments.Text += " ";
-        Comments.Text += " - " + ScorePicker.SelectedItem.ToString() + ". ";
+        Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
         item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0"); 
         ScorePicker.SelectedIndex = -1;
         SaveFields();
