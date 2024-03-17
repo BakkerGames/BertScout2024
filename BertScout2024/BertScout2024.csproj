@@ -51,7 +51,7 @@
 		<MauiIcon Include="Resources\AppIcon\bert_logo_icon.png" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\bert_logo.png" Color="#FFFFFF" BaseSize="316,336" Resize="True"/>
+		<MauiSplashScreen Include="Resources\Splash\bert_logo.png" Color="#FFFFFF" BaseSize="316,336" Resize="True" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -80,7 +80,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Databases\" />
-	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MatchSchedulePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

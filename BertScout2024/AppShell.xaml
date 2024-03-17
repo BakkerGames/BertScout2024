@@ -13,6 +13,13 @@
     >
 
     <ShellContent
+        Title="Match Schedule"
+        FlexLayout.AlignSelf="Center"
+        ContentTemplate="{DataTemplate local:MatchSchedulePage}"
+        Route="MatchSchedulePage"
+        />
+
+    <ShellContent
         Title="BERT Scouting 2024"
         FlexLayout.AlignSelf="Center"
         ContentTemplate="{DataTemplate local:MainPage}"
