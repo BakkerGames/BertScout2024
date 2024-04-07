@@ -391,6 +391,16 @@
                              Text="On Stage"
      />
 
+                        <Button
+     x:Name="ButtonEndgameTrap"
+     Clicked="ButtonEndgameTrap_Clicked"
+     BackgroundColor="Grey"
+     WidthRequest="100"
+     Text="Trap"
+     FontSize="{OnPlatform WinUI=Small, Android=Large}"
+     />
+
+
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout
@@ -399,7 +409,7 @@
                         >
 
                         <Label
-                            Text="Click to select comments:"
+                            Text="Select comments:"
                             Margin="10,6,0,0"
                             />
 
@@ -413,6 +423,8 @@
                             HeightRequest="40"
                             Margin="10,0,0,5"
                             />
+
+                   
 
                     </HorizontalStackLayout>
 

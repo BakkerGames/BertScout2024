@@ -206,6 +206,21 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
+    private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
+    {
+        item.Endgame_Trap = !item.Endgame_Trap;
+        switch (item.Endgame_Trap)
+        {
+            case false:
+                ButtonEndgameTrap.BackgroundColor = Colors.Gray;
+                break;
+            case true:
+                ButtonEndgameTrap.BackgroundColor = Colors.Green;
+                break;
+        }
+        SaveFields();
+    }
+
     private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
     {
         item.Endgame_Spotlit = !item.Endgame_Spotlit;
