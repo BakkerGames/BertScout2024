@@ -54,6 +54,16 @@
                 <Setter Property="Margin" Value="10,3,0,0" />
             </Style>
 
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Green" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="Margin" Value="10,3,0,0" />
+                
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
