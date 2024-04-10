@@ -381,16 +381,6 @@
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
-                        <Button
-     x:Name="ButtonEndgameTrap"
-     Clicked="ButtonEndgameTrap_Clicked"
-     BackgroundColor="Grey"
-     WidthRequest="100"
-     Text="Trap"
-     FontSize="{OnPlatform WinUI=Small, Android=Large}"
-     />
-
-
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout

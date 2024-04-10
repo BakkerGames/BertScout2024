@@ -346,12 +346,6 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
-    private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
-    {
-        SetButton_Trap(!item.Endgame_Trap);
-        SaveFields();
-    }
-
     private void Comments_TextChanged(object sender, TextChangedEventArgs e)
     {
         item.Comments = Comments?.Text ?? "";
