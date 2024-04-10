@@ -12,14 +12,14 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=#aaaaaa}" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="Margin" Value="10,14,0,0" />
             </Style>
 
             <Style TargetType="Entry">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#E0E0E0" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=#aaaaaa}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#E0E0E0, Dark=Green}" />
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -29,7 +29,7 @@
             </Style>
 
             <Style TargetType="Editor">
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=#aaaaaa}" />
                 <Setter Property="BackgroundColor" Value="#E0E0E0" />
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Large" />
@@ -37,7 +37,16 @@
             </Style>
 
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=White, Dark=#aaaaaa}" />
+                <Setter Property="BackgroundColor" Value="Green" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="Margin" Value="10,3,0,0" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=White, Dark=#aaaaaa}" />
                 <Setter Property="BackgroundColor" Value="Green" />
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />

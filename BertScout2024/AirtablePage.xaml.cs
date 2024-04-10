@@ -1,5 +1,6 @@
 using BertScout2024.Databases;
 using BertScout2024.Models;
+using System.Threading.Tasks;
 
 namespace BertScout2024;
 
@@ -20,13 +21,14 @@ public partial class AirtablePage
             AirtableUpdatedLabel.Text = "Sending, please wait...";
             AirtableResults.Text = "";
             InvalidateMeasure();
-            Task task = DisplayAlert("Sending", "Sending data to Airtable - Please Wait", "OK");
+            Task task = DisplayAlert("Sending", "Sending data to Airtable - Please Wait","OK");
+           
             List<TeamMatch> matches = await db.GetItemsAsync();
             var count = await AirtableService.AirtableSendRecords(matches);
             var showS = (count == 1) ? "" : "s";
             AirtableUpdatedLabel.Text = $"{count} record{showS} sent to Airtable";
             foreach (TeamMatch item in matches
-                .OrderBy(x => $"{x.MatchNumber,3}{x.MatchNumber,4}"))
+                .OrderBy(x => $"{x.MatchNumber,3}{x.TeamNumber,5}"))
             {
                 if (item.Changed)
                 {
@@ -34,9 +36,10 @@ public partial class AirtablePage
                     await db.SaveItemAsync(item);
                     if (AirtableResults.Text.Length > 0)
                         AirtableResults.Text += "\r\n";
-                    AirtableResults.Text += $"Match {item.MatchNumber,4} - Team {item.TeamNumber,4}";
+                    AirtableResults.Text += $"Match {item.MatchNumber,3} - Team {item.TeamNumber,5}";
                 }
             }
+           // task.(); !!!!!!!!!!!!
         }
         catch (Exception ex)
         {
@@ -46,6 +49,7 @@ public partial class AirtablePage
         {
             AirtableSend.IsEnabled = true;
         }
+       
     }
 
     private void VerticalStackLayout_SizeChanged(object sender, EventArgs e)

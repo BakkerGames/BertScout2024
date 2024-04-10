@@ -1,6 +1,6 @@
 ﻿namespace BertScout2024;
 
-public partial class App
+public partial class App : Application
 {
     public App()
     {

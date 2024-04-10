@@ -6,10 +6,10 @@ namespace BertScout2024.Databases;
 
 public class AirtableService
 {
-    private const string AIRTABLE_BASE = "apppW4EmzeMC26IEO";
-    //private const string AIRTABLE_KEY = "keyIlZIGEOtUMLKSY";
+    private const string AIRTABLE_BASE = "appnXdbeXxrMQcxWD";
+    private const string AIRTABLE_TABLE = "tblwEZxIYqMwwKKra";
     private const string AIRTABLE_TOKEN =
-        "patC2YWa3BNdqbAhx.15673841cdc935966671f48843cdb32987710fb3170e5a0576fbc42a5909ad95";
+        "patfzISurpeeid0W1.0b1137a4a0e865dec23cec799d2faf4f7eaef82f5ac767c2ca380ac53200791a";
 
     public static async Task<int> AirtableSendRecords(List<TeamMatch> matches)
     {
@@ -31,21 +31,25 @@ public class AirtableService
                 Fields fields = new();
                 foreach (FieldInfo fi in myFieldInfo)
                 {
-                    // name is "<name>stuff", so just get the name part
-                    int pos1 = fi.Name.IndexOf('<') + 1;
-                    int pos2 = fi.Name.IndexOf('>');
-                    string name = fi.Name[pos1..pos2];
-                    // these fields are not in airtable
-                    if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
-                    object? value = fi.GetValue(match);
-                    if (value is bool v) // change to integers
+                    if (string.IsNullOrEmpty(fi.Name)) continue;
+                    if (fi.Name.Contains('<') && fi.Name.Contains('>'))
                     {
-                        value = v ? 1 : 0;
+                        // name is "<name>stuff", so just get the name part
+                        int pos1 = fi.Name.IndexOf('<') + 1;
+                        int pos2 = fi.Name.IndexOf('>');
+                        string name = fi.Name[pos1..pos2];
+                        // these fields are not in airtable
+                        if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
+                        object? value = fi.GetValue(match);
+                        if (value is bool v) // change to integers
+                        {
+                            value = v ? 1 : 0;
+                        }
+                        fields.AddField(name, value);
                     }
-                    fields.AddField(name, value);
                 }
                 newRecordList.Add(fields);
             }
@@ -54,21 +58,25 @@ public class AirtableService
                 IdFields idFields = new(match.AirtableId);
                 foreach (FieldInfo fi in myFieldInfo)
                 {
-                    // name is "<name>stuff", so just get the name part
-                    int pos1 = fi.Name.IndexOf('<') + 1;
-                    int pos2 = fi.Name.IndexOf('>');
-                    string name = fi.Name[pos1..pos2];
-                    // these fields are not in airtable
-                    if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
-                    object? value = fi.GetValue(match);
-                    if (value is bool v) // change to integers
+                    if (string.IsNullOrEmpty(fi.Name)) continue;
+                    if (fi.Name.Contains('<') && fi.Name.Contains('>'))
                     {
-                        value = v ? 1 : 0;
+                        // name is "<name>stuff", so just get the name part
+                        int pos1 = fi.Name.IndexOf('<') + 1;
+                        int pos2 = fi.Name.IndexOf('>');
+                        string name = fi.Name[pos1..pos2];
+                        // these fields are not in airtable
+                        if (name.Equals("id", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("airtableid", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("changed", StringComparison.OrdinalIgnoreCase)) continue;
+                        if (name.Equals("deleted", StringComparison.OrdinalIgnoreCase)) continue;
+                        object? value = fi.GetValue(match);
+                        if (value is bool v) // change to integers
+                        {
+                            value = v ? 1 : 0;
+                        }
+                        idFields.AddField(name, value);
                     }
-                    idFields.AddField(name, value);
                 }
                 updatedRecordList.Add(idFields);
             }
@@ -123,7 +131,9 @@ public class AirtableService
                 foreach (TeamMatch match in matches)
                 {
                     if (match.Uuid == null) continue;
-                    if (match.Uuid == rec.GetField("Uuid")?.ToString())
+                    var uuid = rec.GetField("Uuid");
+                    if (uuid == null) continue;
+                    if (match.Uuid.Equals(uuid.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         match.AirtableId = rec.Id;
                         finalCount++;

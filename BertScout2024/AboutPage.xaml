@@ -6,15 +6,16 @@
     x:DataType="ContentPage"
     x:Name="cpAbout"
     Title="About"
-    BackgroundColor="White"
-    >
+    BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
     
+    >
+
     <VerticalStackLayout
         VerticalOptions="FillAndExpand">
-        
+
         <Label
             x:Name="LabelAboutVersion"
-            Text="Version: 2024.1.8.0"
+            Text="Version: 2024.2.10.0"
             HorizontalOptions="Center"
             />
 
@@ -26,9 +27,9 @@
 
         <Label
             HorizontalOptions="Center"
-            Text="Written by: Scott"
+            Text="Written by: Anton, Keith, Evan, Zander, and Scott"
             />
-        
+
     </VerticalStackLayout>
 
 </ContentPage>

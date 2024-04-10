@@ -7,18 +7,47 @@ public partial class MainPage : ContentPage
 {
     private readonly LocalDatabase db = new();
 
-    private TeamMatch item = new();
+    private TeamMatch item = Globals.item;
 
     public MainPage()
     {
         InitializeComponent();
         CommentPicker.Items.Clear();
+        ScorePicker.Items.Clear();
+
         foreach (string s in CommentList)
         {
             CommentPicker.Items.Add(s);
         }
+
+        foreach (string s in ScoringList)
+        {
+            ScorePicker.Items.Add(s);
+        }
+    }
+    private void MainPage_Loaded(object sender, EventArgs e)
+    {
+        if (Globals.viewFormBody)
+        {
+            TeamNumber.Text = Globals.item.TeamNumber.ToString();
+            MatchNumber.Text = Globals.item.MatchNumber.ToString();
+            ScoutName.Text = Globals.item.ScoutName;
+
+            this.item = Globals.item;
+            Globals.viewFormBody = false;
+
+            Load_Match();
+        }
     }
 
+    private void Load_Match()
+    {
+        // show the values on the screen
+        FillFields(item);
+        // disable the top row while entering
+        EnableTopRow(false);
+    }
+    //IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
     private async void Start_Clicked(object sender, EventArgs e)
     {
         if (Start.Text == "Start")
@@ -26,13 +55,21 @@ public partial class MainPage : ContentPage
             // check that all fields are valid
             if (!ValidateTeamNumber(TeamNumber.Text)) return;
             if (!ValidateMatchNumber(MatchNumber.Text)) return;
-            if (!ValidateScoutName(ScoutName.Text)) return;
+
             // get integer values for later use
             var team = int.Parse(TeamNumber.Text);
             var match = int.Parse(MatchNumber.Text);
+
+            // get existing record
+            item = await db.GetTeamMatchAsync(team, match);
+
+            // check they entered a scout name
+            if (item == null && !ValidateScoutName(ScoutName.Text)) return;
+
             // update screen fields without leading zeros
             TeamNumber.Text = team.ToString();
             MatchNumber.Text = match.ToString();
+
             // delete the match
             if (ScoutName.Text == "DELETE")
             {
@@ -49,8 +86,7 @@ public partial class MainPage : ContentPage
                 TeamNumber.Focus();
                 return;
             }
-            // get existing record
-            item = await db.GetTeamMatchAsync(team, match);
+
             // if not found, create new record
             item ??= new()
             {
@@ -59,35 +95,66 @@ public partial class MainPage : ContentPage
                 ScoutName = ScoutName.Text,
                 Comments = "",
             };
-            // show the values on the screen
-            FillFields(item);
-            // disable the top row while entering
-            EnableTopRow(false);
+
+            Load_Match();
         }
         else if (Start.Text == "Save")
         {
             // store the screen fields in the record
-            SaveFields();
+            SaveFields(); 
+            
+            /*
+            if (profiles.Contains(ConnectionProfile.WiFi) && false)
+            {
+                AirtablePage aPage = new AirtablePage();
+                var uselessTask = Task.Run(() => aPage.AirtableSender());
+                uselessTask.Wait();
+                var useless = uselessTask.Result;
+            }
+            */
+
             // prepare for next match
             TeamNumber.Text = "";
             var match = int.Parse(MatchNumber.Text);
-            MatchNumber.Text = (match + 1).ToString();
+            var newMatch = Math.Min(match + 1, 999);
+            MatchNumber.Text = newMatch.ToString();
             ClearAllFields();
             // re-enable top row and focus on team number
             EnableTopRow(true);
             TeamNumber.Focus();
+
+           
         }
     }
 
+    
+
     private void SaveFields()
     {
-        // store the screen fields in the record
+        // store the screen fields into the record
         StoreFields(item);
+
+        item.Auto_Points = 0;
+        item.Auto_Points += item.Auto_Amp * 2;
+        item.Auto_Points += item.Auto_Speaker * 5;
+        if (item.Auto_Leave) item.Auto_Points += 2;
+
+        item.Tele_Points = 0;
+        item.Tele_Points += item.Tele_Amp;
+        item.Tele_Points += item.Tele_Speaker * 2;
+        item.Tele_Points += item.Tele_Amped_Speaker * 5;
+
+        item.Endgame_Points = 0;
+        item.Endgame_Points += (item.Endgame_Trap ? 5 : 0);
+        item.Endgame_Points += (item.Endgame_Parked ? 1 : 0);
+        item.Endgame_Points += (item.Endgame_OnStage ? 3 : 0);
+        item.Endgame_Points += (item.Endgame_Spotlit ? 1 : 0);
+        item.Endgame_Points += (item.Endgame_Harmony ? 2 : 0);
+
         // save to database
         item.Changed = true;
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        db.SaveItemAsync(item);
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        var taskSave = Task.Run(() => db.SaveItemAsync(item));
+        taskSave.Wait();
     }
 
     private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,112 +163,148 @@ public partial class MainPage : ContentPage
             return;
         if (Comments.Text == null)
             Comments.Text = "";
-        else if (Comments.Text.Length > 0)
+        else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
             Comments.Text += " ";
-        Comments.Text += CommentPicker.SelectedItem.ToString();
+        Comments.Text += CommentPicker.SelectedItem.ToString() + " ";
         CommentPicker.SelectedIndex = -1;
         SaveFields();
     }
 
-    private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
+    // Autonomous
+
+    private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
     {
-            item.Auto_Speaker++;
+        if
+            (item.Auto_Speaker > 0)
+        {
+            item.Auto_Speaker--;
             LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
             SaveFields();
+        }
     }
 
-    private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
+    private void ScorePicker_Picked(object sender, EventArgs e) {
+        if (ScorePicker.SelectedIndex < 0)
+            return;
+        if (Comments.Text == null)
+            Comments.Text = "";
+        else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
+            Comments.Text += " ";
+        Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
+        item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0"); 
+        ScorePicker.SelectedIndex = -1;
+        SaveFields();
+    }
+    private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
     {
-            item.Auto_Amp++;
+        item.Auto_Speaker++;
+        LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+        SaveFields();
+    }
+
+    private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
+    {
+        if
+            (item.Auto_Amp > 0)
+        {
+            item.Auto_Amp--;
             LabelAutoAmp.Text = item.Auto_Amp.ToString();
             SaveFields();
-    }
-
-    private void ButtonAutoMobility_Clicked(object sender, EventArgs e)
-    {
-        item.Auto_Mobility = !item.Auto_Mobility;
-        switch (item.Auto_Mobility)
-        {
-            case false:
-                ButtonAutoMobility.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoMobility.BackgroundColor = Colors.Green;
-                break;
         }
+    }
+    private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
+    {
+        item.Auto_Amp++;
+        LabelAutoAmp.Text = item.Auto_Amp.ToString();
         SaveFields();
     }
 
-    private void ButtonAutoDocked_Clicked(object sender, EventArgs e)
+    private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
     {
-        item.Auto_Docked = !item.Auto_Docked;
-        switch (item.Auto_Docked)
-        {
-            case false:
-                ButtonAutoDocked.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoDocked.BackgroundColor = Colors.Green;
-                break;
-        }
+        item.Auto_Leave = !item.Auto_Leave;
+        ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
         SaveFields();
     }
 
-    private void ButtonAutoEngaged_Clicked(object sender, EventArgs e)
-    {
-        item.Auto_Engaged = !item.Auto_Engaged;
-        switch (item.Auto_Engaged)
-        {
-            case false:
-                ButtonAutoEngaged.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonAutoEngaged.BackgroundColor = Colors.Green;
-                break;
-        }
-        SaveFields();
-    }
+    // Teleop
 
-    private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
     {
-            item.Tele_Speaker++;
+        if
+            (item.Tele_Speaker > 0)
+        {
+            item.Tele_Speaker--;
             LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
             SaveFields();
+        }
+    }
+    private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Speaker++;
+        LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+        SaveFields();
     }
 
-    private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
+    private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
     {
-            item.Tele_Amp++;
+        if
+            (item.Tele_Amp > 0)
+        {
+            item.Tele_Amp--;
             LabelTeleAmp.Text = item.Tele_Amp.ToString();
             SaveFields();
+        }
     }
+    private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Amp++;
+        LabelTeleAmp.Text = item.Tele_Amp.ToString();
+        SaveFields();
+    }
+
+    private void ButtonTeleAmplifiedMinus_Clicked(object sender, EventArgs e)
+    {
+        if (item.Tele_Amped_Speaker > 0)
+        {
+            item.Tele_Amped_Speaker--;
+            LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+            SaveFields();
+        }
+    }
+    private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Amped_Speaker++;
+        LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+        SaveFields();
+    }
+
+    private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
+    {
+        item.Tele_Coop = !item.Tele_Coop;
+        ButtonTeleCoopertition.BackgroundColor = (item.Tele_Coop ? Colors.Green : Colors.Gray);
+        SaveFields();
+    }
+
+    // Endgame
 
     private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Parked = !item.Endgame_Parked;
-        switch (item.Endgame_Parked)
+        SetButton_Parked(!item.Endgame_Parked);
+        if (item.Endgame_Parked)
         {
-            case false:
-                ButtonEndgameParked.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameParked.BackgroundColor = Colors.Green;
-                break;
+            SetButton_OnStage(false);
+            SetButton_Harmony(false);
+            SetButton_Spotlit(false);
         }
         SaveFields();
     }
 
-    private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
+    private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Harmony = !item.Endgame_Harmony;
-        switch (item.Endgame_Harmony)
+        SetButton_OnStage(!item.Endgame_OnStage);
+        if (item.Endgame_OnStage)
         {
-            case false:
-                ButtonEndgameHarmony.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameHarmony.BackgroundColor = Colors.Green;
-                break;
+            SetButton_Parked(false);
         }
         SaveFields();
     }
@@ -221,48 +324,31 @@ public partial class MainPage : ContentPage
         SaveFields();
     }
 
+    private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
+    {
+        SetButton_Harmony(!item.Endgame_Harmony);
+        if (item.Endgame_Harmony)
+        {
+            SetButton_OnStage(true);
+            SetButton_Parked(false);
+        }
+        SaveFields();
+    }
+
     private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_Spotlit = !item.Endgame_Spotlit;
-        switch (item.Endgame_Spotlit)
+        SetButton_Spotlit(!item.Endgame_Spotlit);
+        if (item.Endgame_Spotlit)
         {
-            case false:
-                ButtonEndgameSpotlit.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameSpotlit.BackgroundColor = Colors.Green;
-                break;
+            SetButton_OnStage(true);
+            SetButton_Parked(false);
         }
         SaveFields();
     }
 
-    private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
+    private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
     {
-        item.Endgame_OnStage = !item.Endgame_OnStage;
-        switch (item.Endgame_OnStage)
-        {
-            case false:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonEndgameOnStage.BackgroundColor = Colors.Green;
-                break;
-        }
-        SaveFields();
-    }
-
-    private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
-    {
-        item.Tele_Coop = !item.Tele_Coop;
-        switch (item.Tele_Coop)
-        {
-            case false:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Gray;
-                break;
-            case true:
-                ButtonTeleCoopertition.BackgroundColor = Colors.Green;
-                break;
-        }
+        SetButton_Trap(!item.Endgame_Trap);
         SaveFields();
     }
 
@@ -271,67 +357,37 @@ public partial class MainPage : ContentPage
         item.Comments = Comments?.Text ?? "";
     }
 
-    private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
+    #region ButtonEvents
+
+    private void SetButton_Parked(bool value)
     {
-        if
-            (item.Auto_Speaker > 0)
-        {
-            item.Auto_Speaker--;
-            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
-            SaveFields();
-        }
+        item.Endgame_Parked = value;
+        ButtonEndgameParked.BackgroundColor = (value ? Colors.Green : Colors.Gray);
     }
 
-    private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
+    private void SetButton_OnStage(bool value)
     {
-        if
-            (item.Auto_Amp > 0)
-        {
-            item.Auto_Amp--;
-            LabelAutoAmp.Text = item.Auto_Amp.ToString();
-            SaveFields();
-        }
+        item.Endgame_OnStage = value;
+        ButtonEndgameOnStage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
     }
 
-    private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
+    private void SetButton_Harmony(bool value)
     {
-        if
-            (item.Tele_Speaker > 0)
-        {
-            item.Tele_Speaker--;
-            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
-            SaveFields();
-        }
+        item.Endgame_Harmony = value;
+        ButtonEndgameHarmony.BackgroundColor = (value ? Colors.Green : Colors.Gray);
     }
 
-    private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
+    private void SetButton_Spotlit(bool value)
     {
-        if
-            (item.Tele_Amp > 0)
-        {
-            item.Tele_Amp--;
-            LabelTeleAmp.Text = item.Tele_Amp.ToString();
-            SaveFields();
-        }
+        item.Endgame_Spotlit = value;
+        ButtonEndgameSpotlit.BackgroundColor = (value ? Colors.Green : Colors.Gray);
     }
 
-    private void ButtonTeleTrapMinus_Clicked(object sender, EventArgs e)
+    private void SetButton_Trap(bool value)
     {
-        if(item.Tele_Trap > 0)
-        {
-            item.Tele_Trap--;
-            LabelTeleTrap.Text = item.Tele_Trap.ToString();
-            SaveFields();
-        }
+        item.Endgame_Trap = value;
+        ButtonEndgameTrap.BackgroundColor = (value ? Colors.Green : Colors.Gray);
     }
-    private void ButtonTeleTrapPlus_Clicked(object sender, EventArgs e)
-    {
-        if (item.Tele_Trap < 3)
-        {
-            item.Tele_Trap++;
-            LabelTeleTrap.Text = item.Tele_Trap.ToString();
-            SaveFields();
 
-        }
-    }
+    #endregion
 }

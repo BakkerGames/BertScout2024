@@ -62,18 +62,19 @@ public partial class MainPage
         LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
         LabelAutoAmp.Text = item.Auto_Amp.ToString();
 
-        ButtonAutoMobility.BackgroundColor = item.Auto_Mobility ? Colors.Green : Colors.Gray;
-        ButtonAutoDocked.BackgroundColor = item.Auto_Docked ? Colors.Green : Colors.Gray;
-        ButtonAutoEngaged.BackgroundColor = item.Auto_Engaged ? Colors.Green : Colors.Gray;
+        ButtonAutoLeave.BackgroundColor = item.Auto_Leave ? Colors.Green : Colors.Gray;
 
         LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
         LabelTeleAmp.Text = item.Tele_Amp.ToString();
-        LabelTeleTrap.Text = item.Tele_Trap.ToString();
+        LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+
+        ButtonTeleCoopertition.BackgroundColor = item.Tele_Coop ? Colors.Green : Colors.Gray;
 
         ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
         ButtonEndgameOnStage.BackgroundColor = item.Endgame_OnStage ? Colors.Green : Colors.Gray;
         ButtonEndgameSpotlit.BackgroundColor = item.Endgame_Spotlit ? Colors.Green : Colors.Gray;
         ButtonEndgameHarmony.BackgroundColor = item.Endgame_Harmony ? Colors.Green : Colors.Gray;
+        ButtonEndgameTrap.BackgroundColor = item.Endgame_Trap ? Colors.Green : Colors.Gray;
 
         Comments.Text = item.Comments;
         CommentPicker.SelectedIndex = -1;
