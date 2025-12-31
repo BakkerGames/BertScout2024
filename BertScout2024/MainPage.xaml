@@ -20,7 +20,7 @@
             <Label
                 Text="Team:"
                 Margin="0,20,0,0"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
             <Entry
@@ -31,13 +31,13 @@
                 Margin="4,10,0,0"
                 Text=""
                 IsEnabled="true"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
             <Label
                 Text="Match:"
                 Margin="20,20,0,0"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
             <Entry
@@ -48,7 +48,7 @@
                 Margin="4,10,0,0"
                 Text=""
                 IsEnabled="true"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
             <Entry
@@ -59,7 +59,7 @@
                 Margin="30,10,0,0"
                 Text=""
                 IsEnabled="true"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
             <Button
@@ -67,7 +67,7 @@
                 Text="Start"
                 Clicked="Start_Clicked"
                 Margin="20,10,0,0"
-                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                 />
 
         </HorizontalStackLayout>
@@ -105,7 +105,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoSpeakerMinus" TextColor="Black"                 Clicked="ButtonAutoSpeakerMinus_Clicked"
+                                x:Name="ButtonAutoSpeakerMinus" TextColor="Black"
+                                Clicked="ButtonAutoSpeakerMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
